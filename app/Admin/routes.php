@@ -13,5 +13,6 @@ Route::group([
     $router->get('/', 'HomeController@index');
     $router->resource('contracts', ContractController::class);
     $router->resource('products', ProductController::class);
+    $router->resource('question-answer', QuestionAnswerController::class);
     $router->get('/api/product','\App\Http\Controllers\ProductController@getSearch');
 });
