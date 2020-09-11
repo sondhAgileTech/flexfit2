@@ -14,3 +14,5 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/{token}', 'ContractClient@getToken')->where('token', '[A-Za-z0-9\-\=]+');
+Route::get('/hop-dong/{id}', 'ContractClient@get')->where('id', '[A-Za-z0-9\-]+');

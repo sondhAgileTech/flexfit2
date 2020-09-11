@@ -24,6 +24,7 @@ class CreateContractTable extends Migration
             $table->boolean('status_mainten');
             $table->datetime('finish_date');
             $table->string('language');
+            $table->text('products')->nullable();
             $table->timestamps();
         });
     }
