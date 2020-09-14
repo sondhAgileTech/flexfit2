@@ -1,0 +1,126 @@
+#footer{
+    background: #F7F7F7;
+    margin-top: 40px;
+    padding-top: 40px;
+    .f-title{
+        font-size: 13px;
+        color: #666;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+        margin-top: 20px;
+    }
+    .f-txt{
+        color: #999;
+        font-size: 13px;
+        line-height: 17px;
+        max-width: 370px;
+    }
+    .f-logo{
+        a{
+            display: inline-block;
+            img{
+                max-height: 25px;
+            }
+        }
+    }
+    .f-info{
+        .f-content{
+            ul{
+                li{
+                    margin-bottom: 7px;
+                    a{
+                        display: inline-block;
+                        color: #666;
+                        font-size: 13px;
+                        line-height: 17px;
+                        &:hover{
+                            color: $color-2;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .f-contact{
+        .f-content{
+            ul{
+                li{
+                    margin-bottom: 7px;
+                    a{
+                        display: inline-block;
+                        color: #666;
+                        font-size: 13px;
+                        line-height: 17px;
+                        &:hover{
+                            color: $color-2;
+                        }
+                    }
+                }
+            }
+            .txt{
+                margin-top: 15px;
+                font-size: 13px;
+                line-height: 20px;
+                color: #666;
+            }
+        }
+    }
+    .f-social{
+        ul{
+            display: flex;
+            flex-wrap: wrap;
+            li{
+                margin-right: 20px;
+                a{
+                    font-size: 20px;
+                    display: inline-block;
+                    color: #999;
+                    &:hover{
+                        color: $color-2;
+                    }
+                }
+            }
+        }
+    }
+    .f-register{
+        .box-input{
+            margin-bottom: 8px;
+            input{
+                width: 100%;
+                height: 40px;
+                border-radius: 4px;
+                background: #E0E0E0;
+                padding: 8px 15px;
+                text-align: center;
+                outline: none;
+                border: none;
+            }
+            .btn-submit{
+                background: $color-2;
+                color: #fff;
+                appearance: none;
+                cursor: pointer;
+                &:hover{
+                    background: $color;
+                }
+            }
+        }
+    }
+    .copy-right{
+        margin-top: 40px;
+        padding: 15px 0;
+        border-top: 1px solid #eaeaea;
+        color: #999;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 767px){
+    #footer{
+        margin-top: 20px;
+        padding: 30px 0;
+        .f-logo{
+            margin-bottom: 15px;
+        }
+    }
+}

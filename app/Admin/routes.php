@@ -14,5 +14,7 @@ Route::group([
     $router->resource('contracts', ContractController::class);
     $router->resource('products', ProductController::class);
     $router->resource('question-answer', QuestionAnswerController::class);
+    $router->resource('list-contract-maintain', ListContractMaintainController::class);
+    $router->resource('ask-advice', AskAdviceController::class);
     $router->get('/api/product','\App\Http\Controllers\ProductController@getSearch');
 });

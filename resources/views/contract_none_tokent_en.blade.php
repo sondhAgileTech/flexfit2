@@ -28,53 +28,44 @@
 .bh-4 {
     color:#31BAF5 !important;
 }
-.success-data {
-    display: block;
-    text-align: center;
-    color: #0ACF83;
-    padding-bottom: 20px;
-}
-.error {
-    border:2px solid #FF0000 !important;
-}
 </style>
 <main id="insuarance-wrapper">
     <section class="section-banner">
         <div class="imgc">
             <img src="images/b1.jpg" alt="">
             <div class="text">
-                <p>Thông tin bảo hành</p>
-                <p>HĐ {{$data->contract_code}}</p>
+                <p>WARRANTY INFORMATION</p>
+                <p>code {{$data->contract_code}}</p>
             </div>
         </div>
     </section>
     <section class="info-insuarance">
         <div class="container-master">
-            <div class="info-insuarance-title">Thông tin hợp đồng</div>
+            <div class="info-insuarance-title">Contract information</div>
             <div class="info-insuarance-content">
                 <div class="box-info">
                     <div class="item">
-                        <span>Họ và tên khách hàng:</span>
+                        <span>Full name of customer:</span>
                         <span>{{$data->name_customer}}</span>
                     </div>
                     <div class="item">
-                        <span>Địa chỉ:</span>
+                        <span>Address:</span>
                         <span>{{$data->address}}</span>
                     </div>
                     <div class="item">
-                        <span>Số điện thoại:</span>
+                        <span>Phone number:</span>
                         <span>{{$data->phone}}</span>
                     </div>
                     <div class="item">
-                        <span>Mã hợp đồng:</span>
-                        <span>HĐ {{$data->contract_code}}</span>
+                        <span>Contract Code:</span>
+                        <span>code {{$data->contract_code}}</span>
                     </div>
                     <div class="item">
-                        <span>Hạng mục hợp đồng:</span>
+                        <span>Contract category:</span>
                         <span>{{$data->construction_items}}</span>
                     </div>
                     <div class="item">
-                        <span>Ngày hoàn thành:</span>
+                        <span>Finish day:</span>
                         <span>{{date('d/m/Y', strtotime($data->finish_date))}}</span>
                     </div>
                 </div>
@@ -82,44 +73,44 @@
                     <div class="box-qr" style="width: 228px;height: 224px;background-color: darkgray;">
                         <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')
                         ->merge('images/logo-flextfit.jpg', 0.2, true)
-                        ->size(400)->errorCorrection('H')
+                        ->size(300)->errorCorrection('H')
                         ->generate(env('APP_URL').'/'.$token)) !!} ">
                     </div>
-                    <a href="" title="">Click để tải file bảo hành</a>
+                    <a href="" title="">Click to download warranty file</a>
                 </div>
             </div>
         </div>
     </section>
     <section class="detail-insuarance">
         <div class="container-master">
-            <div class="detail-insuarance-title">Thông tin bảo hành chi tiết</div>
+            <div class="detail-insuarance-title">Detailed warranty information</div>
             <div class="detail-insuarance-content">
                 <div class="note">
-                    <div class="note-title">Chú thích</div>
+                    <div class="note-title">Note</div>
                     <div class="item">
-                        <span class="bh-one">02/02/2020:</span> đã qua bảo hành
+                        <span class="bh-one">02/02/2020:</span> Warranty has passed
                     </div>
                     <div class="item">
-                        <span class="bh-two">02/02/2020:</span> lần bảo hành kế tiếp
+                        <span class="bh-two">02/02/2020:</span> Next warranty
                     </div>
                     <div class="item">
-                        <span class="bh-three">02/02/2020:</span> lần bảo hành trong tương lai
+                        <span class="bh-three">02/02/2020:</span> Future warranty times
                     </div>
                 </div>
                 <div class="cb"></div>
                 <div class="info-detail-insuarance">
                     <table>
                         <tr>
-                            <td>Hạng mục</td>
-                            <td>Đơn vị cung cấp</td>
-                            <td>Bảo hành lần 1</td>
-                            <td>Bảo hành lần 2</td>
-                            <td>Bảo hành lần 3</td>
-                            <td>Bảo trì</td>
+                            <td>Categories</td>
+                            <td>Unit of supply</td>
+                            <td>Warranty 1</td>
+                            <td>Warranty 2</td>
+                            <td>Warranty 3</td>
+                            <td>Maintenance</td>
 
                         </tr>
                         @foreach($products as $list)
-                            <tr class="list-maintain">
+                            <tr>
                                 <td>{{$list->name}}</td>
                                 <td>{{$list->provider}}</td>
                                 <td class="{{$countdown_1 >= 0 ? 'bh-1' : 'bh-out-of-date-1' }}">{{date('d/m/Y', strtotime($data->finish_date.' + 3 months'))}}</td>
@@ -149,7 +140,7 @@
     <section>
         <div class="container-master">
             <div class="question-insuarance">
-                <div class="question-insuarance-title">Câu hỏi thường gặp</div>
+                <div class="question-insuarance-title">Frequently asked questions</div>
                 <div class="question-insuarance-content">
                     @foreach($question_answer as $list)
                         <button class="accordion"><span>{{$list->question}}</span></button>
@@ -169,21 +160,22 @@
                 <form>
                     {{ csrf_field()}}
                     <div class="box-form">
-                        <div class="title">Bạn tin tưởng Flexfit?</div>
+                        <div class="title">Do you trust Flexfit?</div>
                         <div class="txt">
-                            Cùng với đội ngũ thiết kế của Flexfit vẽ nên từng không gian ngôi nhà bạn Flexfit là một thương hiệu bán lẻ
+                            Along with Flexfit's design team, each space of your house Flexfit is a retail brand
                         </div>
-                        <span class="success-data"></span>
                         <div class="row-input">
+
                             <div class="box-input">
-                                <input type="text" id="name" name="name" placeholder="Tên của bạn">
+                                <input type="text" name="name" placeholder="your name">
                             </div>
+
                             <div class="box-input">
-                                <input type="number" id="phone" name="phone" placeholder="Số điện thoại">
+                                <input type="number" name="phone" placeholder="your number">
                             </div>
                         </div>
                         <div class="box-input">
-                            <input type="button" id="register-ask-advice" class="btn-submit" value="Yêu cầu tư vấn">
+                            <input type="submit" class="btn-submit" id="register-ask-advice" value="Ask for advice">
                         </div>
                     </div>
                 </form>
@@ -193,7 +185,7 @@
     <section>
         <div class="container-master">
             <div class="news-other">
-                <div class="news-other-title">Tin tức liên quan</div>
+                <div class="news-other-title">related news</div>
                 <div class="news-other-content">
                     <div class="box-item">
                         <div class="item">
@@ -201,7 +193,7 @@
                                 <a href="" class="imgc" title=""><img src="images/1.png" alt=""></a>
                             </div>
                             <div class="item-body">
-                                <div class="item-title"><a href="" title="">Tên sản phẩm</a></div>
+                                <div class="item-title"><a href="" title="">Product's name</a></div>
                             </div>
                         </div>
                     </div>
@@ -211,7 +203,7 @@
                                 <a href="" class="imgc" title=""><img src="images/1.png" alt=""></a>
                             </div>
                             <div class="item-body">
-                                <div class="item-title"><a href="" title="">Tên sản phẩm</a></div>
+                                <div class="item-title"><a href="" title="">Product's name</a></div>
                             </div>
                         </div>
                     </div>
@@ -221,7 +213,7 @@
                                 <a href="" class="imgc" title=""><img src="images/1.png" alt=""></a>
                             </div>
                             <div class="item-body">
-                                <div class="item-title"><a href="" title="">Tên sản phẩm</a></div>
+                                <div class="item-title"><a href="" title="">Product's name</a></div>
                             </div>
                         </div>
                     </div>
@@ -231,9 +223,3 @@
     </section>
 </main>
 @endsection
-
-
-<!-- <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')
-                        ->merge('images/logo.png', 0.2, true)
-                        ->size(300)->errorCorrection('H')
-                        ->generate(env('APP_URL').'/'.$token)) !!} "> -->

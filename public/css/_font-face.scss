@@ -1,0 +1,13 @@
+﻿@mixin font-face($font-family, $url, $weight, $style) {
+    @font-face {
+      font-family: '#{$font-family}';
+      src: url('#{$url}.ttf') format('truetype');
+      font-weight: $weight;
+      font-style: $style;
+    }
+  }
+  @include font-face("Roboto","../fonts/roboto/Roboto-Thin",200, normal );
+  @include font-face("Roboto","../fonts/roboto/Roboto-Light",300, normal );
+  @include font-face("Roboto","../fonts/roboto/Roboto-Regular",400, normal );
+  @include font-face("Roboto","../fonts/roboto/Roboto-Medium",500, normal );
+  @include font-face("Roboto","../fonts/roboto/Roboto-Bold",700, normal );

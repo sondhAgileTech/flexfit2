@@ -1,0 +1,459 @@
+/*--------Mixin--------*/
+#insuarance-wrapper .section-banner .imgc:before {
+  padding-bottom: calc(549/1680*100%);
+}
+
+#insuarance-wrapper .section-banner .imgc .text {
+  position: absolute;
+  top: 50%;
+  text-align: center;
+  left: 50%;
+  z-index: 1;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+#insuarance-wrapper .section-banner .imgc .text p {
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 3.6rem;
+}
+
+#insuarance-wrapper .section-banner .imgc .text p:first-child {
+  margin-bottom: 20px;
+}
+
+#insuarance-wrapper .section-banner .imgc .text p:last-child {
+  font-size: 6rem;
+  font-weight: 300;
+}
+
+#insuarance-wrapper .info-insuarance {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+#insuarance-wrapper .info-insuarance-title {
+  text-align: center;
+  color: #1F1B59;
+  font-weight: 300;
+  text-transform: uppercase;
+  font-size: 4rem;
+  margin-bottom: 30px;
+}
+
+#insuarance-wrapper .info-insuarance-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+#insuarance-wrapper .info-insuarance-content .box-info {
+  width: calc(100% - 230px);
+  padding-right: 20px;
+}
+
+#insuarance-wrapper .info-insuarance-content .box-info .item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+#insuarance-wrapper .info-insuarance-content .box-info .item span {
+  display: inline-block;
+  line-height: 20px;
+}
+
+#insuarance-wrapper .info-insuarance-content .box-info .item span:first-child {
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  color: #999;
+  width: 155px;
+}
+
+#insuarance-wrapper .info-insuarance-content .box-info .item span:last-child {
+  font-size: 1.5rem;
+  width: calc(100% - 155px);
+}
+
+#insuarance-wrapper .info-insuarance-content .qr-code {
+  width: 230px;
+  text-align: center;
+}
+
+#insuarance-wrapper .info-insuarance-content .qr-code a {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 1.5rem;
+  color: #31BAF5;
+  text-decoration: underline !important;
+}
+
+#insuarance-wrapper .info-insuarance-content .qr-code a:hover {
+  color: #1F1B59;
+}
+
+#insuarance-wrapper .detail-insuarance {
+  padding-top: 50px;
+}
+
+#insuarance-wrapper .detail-insuarance-title {
+  text-align: center;
+  color: #1F1B59;
+  font-weight: 300;
+  text-transform: uppercase;
+  font-size: 4rem;
+  margin-bottom: 30px;
+}
+
+#insuarance-wrapper .detail-insuarance-content .note {
+  float: right;
+}
+
+#insuarance-wrapper .detail-insuarance-content .note .note-title {
+  font-weight: 700;
+  color: #000;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+#insuarance-wrapper .detail-insuarance-content .note .item {
+  margin-bottom: 10px;
+}
+
+#insuarance-wrapper .detail-insuarance-content .note .item span {
+  display: inline-block;
+  color: #666;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+#insuarance-wrapper .detail-insuarance-content .note .item span.bh-one {
+  text-decoration: line-through !important;
+}
+
+#insuarance-wrapper .detail-insuarance-content .note .item span.bh-two {
+  color: #0ACF83;
+}
+
+#insuarance-wrapper .detail-insuarance-content .info-detail-insuarance {
+  margin-top: 20px;
+}
+
+#insuarance-wrapper .detail-insuarance-content .info-detail-insuarance table {
+  width: 100%;
+}
+
+#insuarance-wrapper .detail-insuarance-content .info-detail-insuarance table tr {
+  border-bottom: 1px solid #d0d0d0;
+}
+
+#insuarance-wrapper .detail-insuarance-content .info-detail-insuarance table tr:nth-child(even) {
+  background: #F9F9F9;
+}
+
+#insuarance-wrapper .detail-insuarance-content .info-detail-insuarance table tr td {
+  font-size: 15px;
+  line-height: 22px;
+  color: #000;
+  padding: 12px 10px;
+  text-align: center;
+  font-weight: 400;
+}
+
+#insuarance-wrapper .detail-insuarance-content .info-detail-insuarance table tr td:first-child {
+  text-align: left;
+}
+
+#insuarance-wrapper .detail-insuarance-content .info-detail-insuarance table tr:first-child {
+  text-align: center;
+}
+
+#insuarance-wrapper .detail-insuarance-content .info-detail-insuarance table tr:first-child td {
+  text-decoration: none !important;
+  color: #000 !important;
+  text-align: center;
+}
+
+#insuarance-wrapper .thank-insuarance {
+  max-width: 768px;
+  margin: 0 auto;
+  padding-top: 40px;
+}
+
+#insuarance-wrapper .thank-insuarance .text {
+  font-size: 14px;
+  color: #666;
+  line-height: 24px;
+  text-align: center;
+}
+
+#insuarance-wrapper .question-insuarance {
+  max-width: 768px;
+  margin: 0 auto;
+  margin-top: 40px;
+}
+
+#insuarance-wrapper .question-insuarance-title {
+  color: #1F1B59;
+  font-size: 4rem;
+  font-weight: 300;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+#insuarance-wrapper .question-insuarance-content .panel {
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  -webkit-transition: max-height 0.2s ease-out;
+  transition: max-height 0.2s ease-out;
+}
+
+#insuarance-wrapper .question-insuarance-content .panel .txt {
+  padding: 0 0 15px;
+}
+
+#insuarance-wrapper .question-insuarance-content .accordion {
+  color: #323232;
+  cursor: pointer;
+  padding: 20px 0;
+  background: #fff;
+  width: 100%;
+  border: none;
+  text-align: left;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  outline: none;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 700;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-top: 1px solid #d0d0d0;
+}
+
+#insuarance-wrapper .question-insuarance-content .accordion.active::after {
+  content: "\2212";
+}
+
+#insuarance-wrapper .question-insuarance-content .accordion:after {
+  content: '\002B';
+  color: #666666;
+  font-weight: bold;
+  float: right;
+  font-size: 17px;
+  margin-left: 10px;
+}
+
+#insuarance-wrapper .form-request {
+  max-width: 910px;
+  margin: 0 auto;
+  -webkit-box-shadow: 4px 4px 25px rgba(0, 0, 0, 0.1);
+          box-shadow: 4px 4px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  margin-top: 40px;
+  padding: 40px 20px;
+}
+
+#insuarance-wrapper .form-request .box-form {
+  max-width: 615px;
+  margin: 0 auto;
+}
+
+#insuarance-wrapper .form-request .box-form .title {
+  color: #666;
+  font-weight: 300;
+  font-size: 2.8rem;
+  text-align: center;
+}
+
+#insuarance-wrapper .form-request .box-form .txt {
+  color: #999;
+  text-align: center;
+  max-width: 390px;
+  margin: 0 auto;
+  font-size: 14px;
+  line-height: 22px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+#insuarance-wrapper .form-request .box-form .row-input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 0 -7px;
+}
+
+#insuarance-wrapper .form-request .box-form .row-input .box-input {
+  width: 50%;
+  padding: 0 7px;
+  margin-bottom: 14px;
+}
+
+#insuarance-wrapper .form-request .box-form .row-input .box-input input {
+  outline: none;
+  height: 40px;
+  border-radius: 4px;
+  width: 100%;
+  text-align: center;
+  border: none;
+  background: #F1F1F1;
+  font-size: 14px;
+}
+
+#insuarance-wrapper .form-request .box-form .box-input .btn-submit {
+  background: #31BAF5;
+  color: #fff;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: none;
+  height: 40px;
+  border-radius: 4px;
+  width: 100%;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+}
+
+#insuarance-wrapper .form-request .box-form .box-input .btn-submit:hover {
+  background: #1F1B59;
+}
+
+#insuarance-wrapper .news-other {
+  margin-top: 40px;
+}
+
+#insuarance-wrapper .news-other-title {
+  color: #1F1B59;
+  font-size: 3rem;
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#insuarance-wrapper .news-other-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 0 -15px;
+}
+
+#insuarance-wrapper .news-other-content .box-item {
+  width: calc(100%/3);
+  padding: 0 15px;
+  margin-bottom: 30px;
+}
+
+#insuarance-wrapper .news-other-content .box-item .item:hover img {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+#insuarance-wrapper .news-other-content .box-item .item .item-img .imgc:before {
+  padding-bottom: calc(227/330*100%);
+}
+
+#insuarance-wrapper .news-other-content .box-item .item .item-img img {
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+}
+
+#insuarance-wrapper .news-other-content .box-item .item .item-body {
+  text-align: center;
+}
+
+#insuarance-wrapper .news-other-content .box-item .item .item-body .item-title a {
+  display: inline-block;
+  color: #323232;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+#insuarance-wrapper .news-other-content .box-item .item .item-body .item-title a:hover {
+  color: #31BAF5;
+}
+
+@media (max-width: 991px) {
+  #insuarance-wrapper .info-insuarance-title {
+    font-size: 34px;
+  }
+  #insuarance-wrapper .detail-insuarance-title {
+    font-size: 34px;
+  }
+  #insuarance-wrapper .detail-insuarance-content .info-detail-insuarance {
+    overflow-x: auto;
+  }
+  #insuarance-wrapper .section-banner .imgc .text p:first-child {
+    font-size: 20px;
+  }
+  #insuarance-wrapper .section-banner .imgc .text p:last-child {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  #insuarance-wrapper .section-banner .imgc .text p:first-child {
+    display: none;
+  }
+  #insuarance-wrapper .section-banner .imgc .text p:last-child {
+    font-size: 18px;
+  }
+  #insuarance-wrapper .info-insuarance {
+    padding: 30px 0;
+  }
+  #insuarance-wrapper .info-insuarance-title {
+    font-size: 20px;
+  }
+  #insuarance-wrapper .info-insuarance-content .box-info {
+    width: 100%;
+    padding: 0;
+  }
+  #insuarance-wrapper .info-insuarance-content .qr-code {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+  }
+  #insuarance-wrapper .info-insuarance-content .qr-code .box-qr {
+    margin: 0 auto;
+  }
+  #insuarance-wrapper .detail-insuarance {
+    padding-top: 30px;
+  }
+  #insuarance-wrapper .detail-insuarance-title {
+    font-size: 20px;
+  }
+  #insuarance-wrapper .detail-insuarance-content .note {
+    float: left;
+  }
+  #insuarance-wrapper .detail-insuarance-content .info-detail-insuarance table tr td {
+    min-width: 150px;
+    font-size: 14px;
+  }
+  #insuarance-wrapper .question-insuarance-content .accordion {
+    font-size: 14px;
+    padding: 15px 0;
+  }
+  #insuarance-wrapper .form-request {
+    margin-top: 20px;
+  }
+  #insuarance-wrapper .news-other-content .box-item {
+    width: 100%;
+  }
+}
+/*# sourceMappingURL=insuarance.css.map */
