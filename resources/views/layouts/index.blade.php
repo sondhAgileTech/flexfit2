@@ -82,7 +82,12 @@
                     $('#phone').removeClass('error');
                     $('#name').val('');
                     $('#phone').val('');
-                    $('.success-data').text('Đăng ký thành công');
+                    if($('#register-ask-advice').attr('data-type') == 'vn') {
+                      $('.success-data').text('resgister success');
+                    } else {
+                      $('.success-data').text('Đăng ký thành công');
+                    }
+                   
                     setTimeout(function(){
                       $('.success-data').text('');
                     }, 5000);

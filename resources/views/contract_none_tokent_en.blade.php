@@ -28,6 +28,15 @@
 .bh-4 {
     color:#31BAF5 !important;
 }
+.success-data {
+    display: block;
+    text-align: center;
+    color: #0ACF83;
+    padding-bottom: 20px;
+}
+.error {
+    border:2px solid #FF0000 !important;
+}
 </style>
 <main id="insuarance-wrapper">
     <section class="section-banner">
@@ -164,18 +173,19 @@
                         <div class="txt">
                             Along with Flexfit's design team, each space of your house Flexfit is a retail brand
                         </div>
+                        <span class="success-data"></span>
                         <div class="row-input">
 
                             <div class="box-input">
-                                <input type="text" name="name" placeholder="your name">
+                                <input type="text"  id="name" name="name" placeholder="your name">
                             </div>
 
                             <div class="box-input">
-                                <input type="number" name="phone" placeholder="your number">
+                                <input type="number" id="phone" name="phone" placeholder="your number">
                             </div>
                         </div>
                         <div class="box-input">
-                            <input type="submit" class="btn-submit" id="register-ask-advice" value="Ask for advice">
+                            <input type="button" data-type="{{$data->language}}" class="btn-submit" id="register-ask-advice" value="Ask for advice">
                         </div>
                     </div>
                 </form>
