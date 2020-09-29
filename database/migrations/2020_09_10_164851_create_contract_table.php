@@ -23,6 +23,8 @@ class CreateContractTable extends Migration
             $table->string('email');
             $table->boolean('status_mainten');
             $table->datetime('finish_date');
+            $table->datetime('changed_time_maintain')->nullable();
+            $table->string('status_changed_time_maintain')->nullable();
             $table->string('language');
             $table->text('products')->nullable();
             $table->timestamps();

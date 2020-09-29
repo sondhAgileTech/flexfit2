@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        Commands\SentMailCron::class,
     ];
 
     /**
@@ -24,8 +24,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        $schedule->command('send:mail')
+                ->everyMinute();
+        // run lenh : cd /đuong-dan-den-project && php artisan schedule:run >> /dev/null 2>&1
     }
 
     /**

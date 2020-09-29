@@ -3,6 +3,7 @@
 namespace App\Admin\Controllers;
 
 use App\AskAdvice;
+use App\Contract;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\HasResourceActions;
 use Encore\Admin\Form;
@@ -82,8 +83,13 @@ class AskAdviceController extends Controller
         $grid = new Grid(new AskAdvice);
 
         $grid->id('Id');
-        $grid->name('Tên');
-        $grid->phone('Số điện thoại');
+        $grid->name('Tên người nhận');
+        $grid->phone('Số điện thoại - Email');
+        $grid->contract_code('Mã hợp đồng');
+        $grid->column( 'Họ và tên khách hàng')->display(function () {
+            $data = Contract::where('contract_code',$this->contract_code)->first();
+            return $data->name_customer;
+        });
 
         return $grid;
     }
@@ -99,8 +105,9 @@ class AskAdviceController extends Controller
         $show = new Show(AskAdvice::findOrFail($id));
 
         $show->id('Id');
-        $show->name('Tên');
-        $show->phone('Số điện thoại');
+        $show->name('Tên người nhận');
+        $show->phone('Số điện thoại - Email');
+        $show->contract_code('Mã hợp đồng');
 
         return $show;
     }
@@ -114,8 +121,9 @@ class AskAdviceController extends Controller
     {
         $form = new Form(new AskAdvice);
 
-        $form->text('name', 'Tên');
-        $form->mobile('phone', 'Số điện thoại');
+        $form->text('name', 'Tên người nhận');
+        $form->mobile('phone', 'Số điện thoại - Email');
+        $form->text('contract_code', 'Mã hợp đồng');
 
         return $form;
     }

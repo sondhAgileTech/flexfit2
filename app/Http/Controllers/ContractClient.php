@@ -5,49 +5,44 @@ namespace App\Http\Controllers;
 use App\Contract;
 use App\Product;
 use App\QuestionAnswer;
+use App\ContractText;
+use App\ContractProduct;
+use Illuminate\Support\Facades\DB;
 use App\Library\TokenGenerator;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
 class ContractClient extends Controller
 {
-    //
     public static function get(Request $request) {
         $data = Contract::where(['contract_code' => $request->id])->first();
-        $now = date('Y-m-d H:i:s');
-
-        if(is_array($data->products)) {
-            $listProduct = [];
-            foreach ($data->products as $item) {
-                $product = Product::where('id',(int)$item)->first();
-                $listProduct[] = $product;
+        if($data) {
+            $now = date('Y-m-d H:i:s');
+            // $products = Product::getProducts($data->id);
+            if(is_array($data->products)) {
+                $listProduct = [];
+                foreach ($data->products as $item) {
+                    $product = Product::where('id',(int)$item)->first();
+                    $listProduct[] = $product;
+                }
             }
-        }
-
-        $countdown_1 = Carbon::now()->diffInDays(Carbon::parse($data->finish_date)->addMonth(3), false);
-        $countdown_2 = Carbon::now()->diffInDays(Carbon::parse($data->finish_date)->addMonth(6), false);
-        $countdown_3 = Carbon::now()->diffInDays(Carbon::parse($data->finish_date)->addMonth(12), false);
-
-        if($data->language === 'vi') {
-            return view('contract_none_token', [
-                'countdown_1' => $countdown_1,
-                'countdown_2' => $countdown_2,
-                'countdown_3' => $countdown_3,
-                'data' => $data,
-                'products' => $listProduct,
-                'now' => $now ,
-                'question_answer' => QuestionAnswer::get(),
-                'token' => base64_encode(TokenGenerator::encrypt($data->id.'<>'.$data->contract_code.'<>'.$data->email, env('APP_KEY'), 256))]);
-        } else {
-            return view('contract_none_tokent_en', [
-                'countdown_1' => $countdown_1,
-                'countdown_2' => $countdown_2,
-                'countdown_3' => $countdown_3,
-                'data' => $data,
-                'products' => $listProduct,
-                'now' => $now ,
-                'question_answer' => QuestionAnswer::get(),
-                'token' => base64_encode(TokenGenerator::encrypt($data->id.'<>'.$data->contract_code.'<>'.$data->email, env('APP_KEY'), 256))]);
+            if($data->language === 'vi') {
+                return view('contract_none_token', [
+                    'data' => $data,
+                    'products' => $listProduct,
+                    'now' => $now ,
+                    'content_text' => ContractText::GetLetterThankYou(),
+                    'question_answer' => QuestionAnswer::where('language','=', 'vi')->get(),
+                    'token' => base64_encode(TokenGenerator::encrypt($data->id.'<>'.$data->contract_code.'<>'.$data->email, env('APP_KEY'), 256))]);
+            } else {
+                return view('contract_none_tokent_en', [
+                    'data' => $data,
+                    'products' => $listProduct,
+                    'now' => $now ,
+                    'content_text' => ContractText::GetLetterThankYouEnglish(),
+                    'question_answer' => QuestionAnswer::where('language','=', 'en')->get(),
+                    'token' => base64_encode(TokenGenerator::encrypt($data->id.'<>'.$data->contract_code.'<>'.$data->email, env('APP_KEY'), 256))]);
+            }
         }
     }
 
@@ -66,7 +61,7 @@ class ContractClient extends Controller
                 ])->first();
                 if($data) {
                     $now = date('Y-m-d H:i:s');
-
+                    // $products = Product::getProducts($data->id);
                     if(is_array($data->products)) {
                         $listProduct = [];
                         foreach ($data->products as $item) {
@@ -74,33 +69,24 @@ class ContractClient extends Controller
                             $listProduct[] = $product;
                         }
                     }
-            
-                    $countdown_1 = Carbon::now()->diffInDays(Carbon::parse($data->finish_date)->addMonth(3), false);
-                    $countdown_2 = Carbon::now()->diffInDays(Carbon::parse($data->finish_date)->addMonth(6), false);
-                    $countdown_3 = Carbon::now()->diffInDays(Carbon::parse($data->finish_date)->addMonth(12), false);
-            
+
                     if($data->language === 'vi') {
                         return view('contract_none_token', [
-                            'countdown_1' => $countdown_1,
-                            'countdown_2' => $countdown_2,
-                            'countdown_3' => $countdown_3,
                             'data' => $data,
                             'products' => $listProduct,
                             'now' => $now ,
-                            'question_answer' => QuestionAnswer::get(),
+                            'content_text' => ContractText::GetLetterThankYou(),
+                            'question_answer' => QuestionAnswer::where('language','=', 'vi')->get(),
                             'token' => base64_encode(TokenGenerator::encrypt($data->id.'<>'.$data->contract_code.'<>'.$data->email, env('APP_KEY'), 256))]);
                     } else {
                         return view('contract_none_tokent_en', [
-                            'countdown_1' => $countdown_1,
-                            'countdown_2' => $countdown_2,
-                            'countdown_3' => $countdown_3,
                             'data' => $data,
                             'products' => $listProduct,
                             'now' => $now ,
-                            'question_answer' => QuestionAnswer::get(),
+                            'content_text' => ContractText::GetLetterThankYouEnglish(),
+                            'question_answer' => QuestionAnswer::where('language','=', 'en')->get(),
                             'token' => base64_encode(TokenGenerator::encrypt($data->id.'<>'.$data->contract_code.'<>'.$data->email, env('APP_KEY'), 256))]);
                     }
-                    // return view('contract_with_token', ['data' => $data]);
                 } else {
                     return abort(404);
                 }
@@ -108,5 +94,21 @@ class ContractClient extends Controller
             else return abort(404);
         }
         else return abort(404);
+    }
+
+    public static function changedTimeMainTainContract(Request $request) {
+        $contract_id = $request->input('contract_id');
+        $dateMaintain = $request->input('date_maintain');
+        $contract_code = $request->input('contract_code');
+
+        $newDate = Carbon::createFromFormat('d/m/Y', $dateMaintain)->format('Y-m-d H:i:s');
+
+        if($contract_id) {
+            $data = Contract::where('contract.id', '=', $contract_id)
+                                    ->update(['contract.changed_time_maintain' => $newDate, 'contract.status_changed_time_maintain' => 'pending']);
+            if($data) {
+                return response()->json(['success' => ['status' => 200]]);
+            }    
+        }
     }
 }

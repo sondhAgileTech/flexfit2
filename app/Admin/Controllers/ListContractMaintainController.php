@@ -84,7 +84,7 @@ class ListContractMaintainController extends Controller
     {
         $grid = new Grid(new Contract);
         $grid->disableActions();
-        $grid->model()->where(DB::raw('DATE_ADD(finish_date, INTERVAL 3 MONTH)'), '>', Carbon::now())->orderBy('finish_date', 'asc');
+        $grid->model()->where(DB::raw('DATE_ADD(finish_date, INTERVAL 12 MONTH)'), '>', Carbon::now())->orderBy('finish_date', 'asc');
         $grid->contract_code('Contract code');
         $grid->products('Name customer')->display(function($products) {
             $html = null;
@@ -99,7 +99,14 @@ class ListContractMaintainController extends Controller
 
         $grid->finish_date('Trạng Thái Bảo Trì')->display(function ($date) {
             $countdown_1 = Carbon::now()->diffInDays(Carbon::parse($date)->addMonth(3), false);
-            $html = "<div class='alert-success text-center'>".(($countdown_1>=0)?$countdown_1." ngày nữa":"Đã Hết Hạn")."</div>";
+            $countdown_2 = Carbon::now()->diffInDays(Carbon::parse($date)->addMonth(6), false);
+            $countdown_3 = Carbon::now()->diffInDays(Carbon::parse($date)->addMonth(12), false);
+            $time_maintain_1 = date('d/m/Y', strtotime($this->finish_date.' + 3 months'));
+            $time_maintain_2 = date('d/m/Y', strtotime($this->finish_date.' + 6 months'));
+            $time_maintain_3 = date('d/m/Y', strtotime($this->finish_date.' + 12 months'));
+            $html = "<div class='alert-success text-center'>".(($countdown_1>=0)? "Bảo hành 1 : ".$countdown_1." ngày nữa - ".$time_maintain_1."":"")."</div>";
+            $html .= "<div class='alert-danger text-center'>".(($countdown_2>=0)? "Bảo hành 2 : ".$countdown_2." ngày nữa - ".$time_maintain_2."":"")."</div>";
+            $html .= "<div class='alert-info text-center'>".(($countdown_3>=0)? "Bảo hành 3 : ".$countdown_3." ngày nữa - ".$time_maintain_3."":"")."</div>";
             return $html;
         });
 

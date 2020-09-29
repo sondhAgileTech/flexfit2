@@ -6,6 +6,7 @@ use App\Contract;
 use App\Http\Controllers\Controller;
 use App\Library\TokenGenerator;
 use App\Product;
+use App\ContractProduct;
 use Encore\Admin\Controllers\HasResourceActions;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -92,13 +93,13 @@ class ContractController extends Controller
         $grid->email('Email');
         $grid->status_mainten('Trạng Thái')->display(function($status) {
             if($status == 1) {
-                return "Bảo trì";
+                return "Bảo hành";
             } else {
-                return "Không bảo trì";
+                return "Bảo trì";
             }
         });
         $grid->finish_date('Ngày Hoàn Thành')->display(function($date){
-            return date('Y/m/d', strtotime($date));
+            return date('d/m/Y', strtotime($date));
         });
         $grid->language('Ngôn Ngữ');
 
@@ -121,7 +122,7 @@ class ContractController extends Controller
         $show->phone('Số Điện Thoại');
         $show->address('Địa Chỉ');
         $show->email('Email');
-        $show->status_mainten('Trạng Thái')->using([true => 'Bảo Trì', false => 'Không Bảo Trì']);
+        $show->status_mainten('Trạng Thái')->using([true => 'Bảo hành', false => 'Bảo Trì']);
         $show->finish_date('Ngày Hoàn Thành');
         $show->language('Ngôn Ngữ');
         $show->products('Sản Phẩm')->as(function ($products) {
@@ -133,9 +134,9 @@ class ContractController extends Controller
                                   <th scope="col">STT</th>
                                   <th scope="col">Tên Sản Phẩm</th>
                                   <th scope="col">Nhà Cung Cấp</th>
-                                  <th scope="col">Bảo trì lần 1</th>
-                                  <th scope="col">Bảo trì lần 2</th>
-                                  <th scope="col">Bảo trì lần 3</th>
+                                  <th scope="col">Bảo hành lần 1</th>
+                                  <th scope="col">Bảo hành lần 2</th>
+                                  <th scope="col">Bảo hành lần 3</th>
                                   <th scope="col">Trạng Thái</th>
                                 </tr>
                               </thead>
@@ -148,9 +149,9 @@ class ContractController extends Controller
                           <th scope="row">'.$i.'</th>
                           <td>'.$data->name.'</td>
                           <td>'.$data->provider.'</td>
-                          <td>'.date('Y/m/d', strtotime($this->finish_date.' + 3 months')).'</td>
-                          <td>'.date('Y/m/d', strtotime($this->finish_date.' + 6 months')).'</td>
-                          <td>'.date('Y/m/d', strtotime($this->finish_date.' + 12 months')).'</td>
+                          <td>'.date('d/m/Y', strtotime($this->finish_date.' + 3 months')).'</td>
+                          <td>'.date('d/m/Y', strtotime($this->finish_date.' + 6 months')).'</td>
+                          <td>'.date('d/m/Y', strtotime($this->finish_date.' + 12 months')).'</td>
                           <td>'.(($data->status_maitain_product)?'Bảo Trì':'Không Bảo Trì').'</td>
                         </tr>';
                         $i++;
@@ -167,6 +168,7 @@ class ContractController extends Controller
                 $token = base64_encode(TokenGenerator::encrypt($data->id.'<>'.$data->contract_code.'<>'.$data->email, env('APP_KEY'), 256));
                 $url = env('APP_URL').'/hop-dong/'.$data->contract_code;
                 $html = QrCode::size(400)->generate(env('APP_URL').'/'.$token);
+                $html .= '<button class="download-pdf">Print</button>';
                 $html .= '<table class="table">';
                 $html .= '<tr><td><strong>Đường Dẫn</strong></td><td> <a href="'.$url.'" target="_blank">'.$url.'</a></td></tr>';
                 $html .= '<tr><td><strong>Token</strong></td><td> '.$token.'</td></tr>';
@@ -207,7 +209,7 @@ class ContractController extends Controller
         $form->email('email', 'Email')->rules('required', [
             'required' => 'Xin vui lòng nhập địa chỉ email.'
         ]);
-        $form->select('status_mainten', 'Trạng Thái')->options([true => 'Bảo Trì', false => 'Không Bảo Trì'])->default(true);
+        $form->select('status_mainten', 'Trạng Thái')->options([true => 'Bảo hành', false => 'Bảo Trì'])->default(true);
         $form->datetime('finish_date', 'Ngày Hoàn Thành')->default(date('Y-m-d H:i:s'))->rules('required', [
             'required' => 'Xin vui lòng nhập Ngày hoàn thành.'
         ]);
@@ -225,7 +227,13 @@ class ContractController extends Controller
                 return $result;
             }
 
-        })->ajax('/'.config('admin.route.prefix').'/api/product');
+        })->rules('required', [
+            'required' => 'Xin vui lòng chọn sản phẩm.'
+        ])->ajax('/'.config('admin.route.prefix').'/api/product');
+        // $form->hasMany('product_list', 'Danh Sách Sản Phẩm', function (Form\NestedForm $form) {
+        //     $form->select('product_id','Sản Phẩm')->options(Product::all()->pluck('name','id'));
+        //     $form->datetime('selected_at', 'Ngày bảo hành')->default(date('Y-m-d H:i:s'));
+        // });
 
         return $form;
     }

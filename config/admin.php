@@ -22,7 +22,7 @@ return [
     | `img` tag, eg '<img src="http://logo-url" alt="Admin logo">'.
     |
     */
-    'logo' => '<b>Bảo hành</b>',
+    'logo' => '',
 
     /*
     |--------------------------------------------------------------------------
@@ -34,7 +34,7 @@ return [
     | '<img src="http://logo-url" alt="Admin logo">'.
     |
     */
-    'logo-mini' => '<b>Bảo hành</b>',
+    'logo-mini' => '<a class="logo-flexfit-mini" style="position: absolute; left: 10px;top: 14px;" href="https://flexfit.vn/"><img width="60px" src="https://flexfit.vn/wp-content/uploads/2020/03/Logo.png" alt="Admin logo"></a>',
 
     /*
     |--------------------------------------------------------------------------
@@ -262,7 +262,7 @@ return [
     | each page
     |
     */
-    'show_version' => true,
+    'show_version' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -272,7 +272,7 @@ return [
     | Whether to display the environment at the footer of each page
     |
     */
-    'show_environment' => true,
+    'show_environment' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -312,6 +312,16 @@ return [
     |
     */
     'extensions' => [
-
+        'ckeditor' => [
+        
+            //Set to false if you want to disable this extension
+            'enable' => true,
+            
+            // Editor configuration
+            'config' => [
+                'lang'   => 'zh-CN',
+                'height' => 500,
+            ]
+        ]
     ],
 ];

@@ -84,6 +84,7 @@ class QuestionAnswerController extends Controller
         $grid->id('Id');
         $grid->question('Câu hỏi');
         $grid->answer('Câu trả lời');
+        $grid->language('Ngôn ngữ');
 
         return $grid;
     }
@@ -101,8 +102,7 @@ class QuestionAnswerController extends Controller
         $show->id('Id');
         $show->question('Câu hỏi');
         $show->answer('Câu trả lời');
-        $show->created_at('Created at');
-        $show->updated_at('Updated at');
+        $show->language('Ngôn ngữ');
 
         return $show;
     }
@@ -118,6 +118,8 @@ class QuestionAnswerController extends Controller
 
         $form->text('question', 'Câu hỏi');
         $form->text('answer', 'Câu trả lời');
+        $language = ['en'=>'English', 'vi'=> 'Việt nam'];
+        $form->select('language', 'Ngôn Ngữ')->options($language);
 
         return $form;
     }
