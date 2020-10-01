@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use App\Library\TokenGenerator;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use PDF;
 
 class ContractClient extends Controller
 {
@@ -109,6 +110,19 @@ class ContractClient extends Controller
             if($data) {
                 return response()->json(['success' => ['status' => 200]]);
             }    
+        }
+    }
+
+    public static function getPdfFile($id_contract) {
+        $data = Contract::where('contract.contract_code', '=', $id_contract)->first();
+        if($data){
+            $token = base64_encode(TokenGenerator::encrypt($data->id.'<>'.$data->contract_code.'<>'.$data->email, env('APP_KEY'), 256));
+            $customPaper = array(0,0,300,520);
+            // pass view file
+            $pdf = PDF::loadView('pdf_contract', compact('token'))->setPaper($customPaper, 'landscape')->setOptions(['isRemoteEnabled' => true,'logOutputFile'=>storage_path('logs/pdf.log'),'tempDir'=>storage_path('logs/')]);
+
+            //download pdf
+            return $pdf->stream();
         }
     }
 }

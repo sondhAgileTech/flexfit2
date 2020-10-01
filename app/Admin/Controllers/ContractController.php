@@ -168,7 +168,7 @@ class ContractController extends Controller
                 $token = base64_encode(TokenGenerator::encrypt($data->id.'<>'.$data->contract_code.'<>'.$data->email, env('APP_KEY'), 256));
                 $url = env('APP_URL').'/hop-dong/'.$data->contract_code;
                 $html = QrCode::size(400)->generate(env('APP_URL').'/'.$token);
-                $html .= '<button class="download-pdf">Print</button>';
+                $html .= '<a href="/api/download/'.$data->contract_code.'" target="_blank">Click here to download file bảo hành</button>';
                 $html .= '<table class="table">';
                 $html .= '<tr><td><strong>Đường Dẫn</strong></td><td> <a href="'.$url.'" target="_blank">'.$url.'</a></td></tr>';
                 $html .= '<tr><td><strong>Token</strong></td><td> '.$token.'</td></tr>';
