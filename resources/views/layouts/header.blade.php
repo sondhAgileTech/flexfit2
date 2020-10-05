@@ -12,12 +12,12 @@
                     </div>
                     <div class="ss-navbar-menu">
                         <ul>
-                            <li class="active"><a href="" title="">Về chúng tôi</a></li>
-                            <li><a href="" title="">Thiết kế tiêu biểu</a></li>
-                            <li><a href="" title="">Kiến trúc sư</a></li>
-                            <li><a href="" title="">Quy trình</a></li>
-                            <li><a href="" title="">Tin tức</a></li>
-                            <li><a href="" title="">Liên hệ</a></li>
+                            <li class="active"><a href="https://flexfit.vn/ve-chung-toi" title="">Về chúng tôi</a></li>
+                            <li><a href="https://flexfit.vn/tktb" title="">Thiết kế tiêu biểu</a></li>
+                            <li><a href="https://flexfit.vn/du-an" title="">Kiến trúc sư</a></li>
+                            <li><a href="https://flexfit.vn/quy-trinh" title="">Quy trình</a></li>
+                            <li><a href="https://flexfit.vn/tin-tuc" title="">Tin tức</a></li>
+                            <li><a href="https://flexfit.vn/lien-he" title="">Liên hệ</a></li>
                         </ul>
                     </div>
                 </nav>
@@ -38,12 +38,12 @@
                     </div>
                     <div class="ss-navbar-menu">
                         <ul>
-                            <li class="active"><a href="" title="">About us</a></li>
-                            <li><a href="" title="">Typical design</a></li>
-                            <li><a href="" title="">Project</a></li>
-                            <li><a href="" title="">Procedure</a></li>
-                            <li><a href="" title="">News</a></li>
-                            <li><a href="" title="">Contact</a></li>
+                            <li class="active"><a href="https://flexfit.vn/en/ve-chung-toi" title="">About us</a></li>
+                            <li><a href="https://flexfit.vn/en/tktb" title="">Typical design</a></li>
+                            <li><a href="https://flexfit.vn/en/du-an" title="">Project</a></li>
+                            <li><a href="https://flexfit.vn/en/quy-trinh" title="">Procedure</a></li>
+                            <li><a href="https://flexfit.vn/en/tin-tuc" title="">News</a></li>
+                            <li><a href="https://flexfit.vn/en/lien-he" title="">Contact</a></li>
                         </ul>
                     </div>
                 </nav>
