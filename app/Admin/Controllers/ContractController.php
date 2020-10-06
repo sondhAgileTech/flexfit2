@@ -14,6 +14,12 @@ use Encore\Admin\Layout\Content;
 use Encore\Admin\Show;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
+use App\Admin\Extensions\Tools\ImportButton;
+use App\Admin\Actions\Member\ImportAction;
+use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\Member\ImportMember;
+
 class ContractController extends Controller
 {
     use HasResourceActions;
@@ -103,7 +109,25 @@ class ContractController extends Controller
         });
         $grid->language('Ngôn Ngữ');
 
+        $grid->tools(function ($tools) {
+            $tools->append(new ImportButton());
+        });
+
         return $grid;
+    }
+
+
+    protected function import(Content $content, Request $request)               
+    {      
+        
+        try{
+            // $request ...
+            $file = $request-> file('file');
+            Excel::import(new ImportMember($file), $file);
+        
+        }catch (\Exception $e){
+
+        }                                  
     }
 
     /**

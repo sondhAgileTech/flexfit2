@@ -8,7 +8,15 @@ class Contract extends Model
 {
     //
     protected $table = 'contract';
+    protected $primaryKey = 'id';
 
+    protected $fillable = [
+        'contract_code', 'name_customer',
+        'construction_items', 'phone',
+        'address', 'email','status_mainten','finish_date',
+        'language','updated_at', 'created_at'
+    ];
+    
     public function product_list()
     {
         return $this->hasMany(ContractProduct::class, 'contract_id');
