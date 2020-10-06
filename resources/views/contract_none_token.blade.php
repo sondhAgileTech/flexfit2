@@ -85,7 +85,7 @@
                         ->size(400)->errorCorrection('H')
                         ->generate(env('APP_URL').'/'.$token)) !!} ">
                     </div>
-                    <a href="" title="">Click để tải file bảo hành</a>
+                    <a href='/api/download_file/{{$data->contract_code}}' title="">Click để tải file bảo hành</a>
                 </div>
             </div>
         </div>

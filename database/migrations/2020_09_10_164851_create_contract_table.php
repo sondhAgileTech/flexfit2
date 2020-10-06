@@ -27,6 +27,7 @@ class CreateContractTable extends Migration
             $table->string('status_changed_time_maintain')->nullable();
             $table->string('language');
             $table->text('products')->nullable();
+            $table->text('file_upload')->nullable();
             $table->timestamps();
         });
     }

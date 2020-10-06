@@ -254,6 +254,8 @@ class ContractController extends Controller
         })->rules('required', [
             'required' => 'Xin vui lòng chọn sản phẩm.'
         ])->ajax('/'.config('admin.route.prefix').'/api/product');
+
+        $form->file('file_upload','Upload file');
         // $form->hasMany('product_list', 'Danh Sách Sản Phẩm', function (Form\NestedForm $form) {
         //     $form->select('product_id','Sản Phẩm')->options(Product::all()->pluck('name','id'));
         //     $form->datetime('selected_at', 'Ngày bảo hành')->default(date('Y-m-d H:i:s'));

@@ -12,6 +12,7 @@ use App\Library\TokenGenerator;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use PDF;
+use Illuminate\Support\Facades\Storage;
 
 class ContractClient extends Controller
 {
@@ -123,6 +124,13 @@ class ContractClient extends Controller
 
             //download pdf
             return $pdf->stream();
+        }
+    }
+
+    public static function getFileContract($id_contract) {
+        $data = Contract::where('contract.contract_code', '=', $id_contract)->first();
+        if($data){
+            return Storage::download($data->file_upload);
         }
     }
 }
