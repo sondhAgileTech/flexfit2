@@ -84,11 +84,14 @@ class AskAdviceController extends Controller
 
         $grid->id('Id');
         $grid->name('Tên người nhận');
-        $grid->phone('Số điện thoại - Email');
+        $grid->phone('Số điện thoại');
+        $grid->email('Email');
         $grid->contract_code('Mã hợp đồng');
         $grid->column( 'Họ và tên khách hàng')->display(function () {
             $data = Contract::where('contract_code',$this->contract_code)->first();
-            return $data->name_customer;
+            if($data) {
+                return $data->name_customer;
+            }
         });
 
         return $grid;
@@ -107,6 +110,7 @@ class AskAdviceController extends Controller
         $show->id('Id');
         $show->name('Tên người nhận');
         $show->phone('Số điện thoại - Email');
+        $show->Email('Email');
         $show->contract_code('Mã hợp đồng');
 
         return $show;
@@ -122,7 +126,8 @@ class AskAdviceController extends Controller
         $form = new Form(new AskAdvice);
 
         $form->text('name', 'Tên người nhận');
-        $form->mobile('phone', 'Số điện thoại - Email');
+        $form->mobile('phone', 'Số điện thoại');
+        $form->email('email', 'Email');
         $form->text('contract_code', 'Mã hợp đồng');
 
         return $form;

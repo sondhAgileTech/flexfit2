@@ -85,7 +85,7 @@
                         ->size(400)->errorCorrection('H')
                         ->generate(env('APP_URL').'/'.$token)) !!} ">
                     </div>
-                    <a href="" title="">Click để tải file bảo hành</a>
+                    <a href='/api/download_file/{{$data->contract_code}}' title="" target="_blank">Click để tải file bảo hành</a>
                 </div>
             </div>
         </div>
@@ -103,7 +103,7 @@
                             <td>Lịch kiểm tra định kỳ lần 1</td>
                             <td>Lịch kiểm tra định kỳ lần 2</td>
                             <td>Lịch kiểm tra định kỳ lần 3</td>
-                            <td>Bảo trì</td>
+                            <td>Bảo hành</td>
                             <td>
                                 <i class="glyphicon glyphicon-calendar"></i> 
                                 Đổi lịch kiểm tra
@@ -194,7 +194,10 @@
                                 <input type="text" id="name" name="name" placeholder="Tên người nhận">
                             </div>
                             <div class="box-input">
-                                <input type="text" id="phone" name="phone" placeholder="Email - Số điện thoại người nhận">
+                                <input type="text" id="phone" name="phone" placeholder="Số điện thoại người nhận">
+                            </div>
+                            <div class="box-input" style="width:100% !important;">
+                                <input type="email" id="email" name="email" placeholder="Email người nhận">
                             </div>
                         </div>
                         <div class="box-input">
@@ -202,45 +205,6 @@
                         </div>
                     </div>
                 </form>
-            </div>
-        </div>
-    </section>
-    <section>
-        <div class="container-master">
-            <div class="news-other">
-                <div class="news-other-title">Tin tức liên quan</div>
-                <div class="news-other-content">
-                    <div class="box-item">
-                        <div class="item">
-                            <div class="item-img">
-                                <a href="" class="imgc" title=""><img src="images/1.png" alt=""></a>
-                            </div>
-                            <div class="item-body">
-                                <div class="item-title"><a href="" title="">Tên sản phẩm</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="box-item">
-                        <div class="item">
-                            <div class="item-img">
-                                <a href="" class="imgc" title=""><img src="images/1.png" alt=""></a>
-                            </div>
-                            <div class="item-body">
-                                <div class="item-title"><a href="" title="">Tên sản phẩm</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="box-item">
-                        <div class="item">
-                            <div class="item-img">
-                                <a href="" class="imgc" title=""><img src="images/1.png" alt=""></a>
-                            </div>
-                            <div class="item-body">
-                                <div class="item-title"><a href="" title="">Tên sản phẩm</a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>

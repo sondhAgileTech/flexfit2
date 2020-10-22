@@ -12,6 +12,7 @@ class AskAdvice extends Model
     protected $fillable = [
         'name',
         'phone',
+        'email',
         'contract_code'
     ];
 }

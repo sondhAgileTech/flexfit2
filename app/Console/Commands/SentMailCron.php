@@ -63,7 +63,7 @@ class SentMailCron extends Command
     
             $now = Carbon::now();
             Mail::send('mail', ['data' => $data , 'products'=> $listProduct, 'now' => $now], function($message) use ($data) {
-                $message->to('dinhhongson23596@gmail.com')->subject
+                $message->to('hcns@flexfit.vn')->subject
                    ('Danh sách sản phẩm sắp đến hạn bảo hành');
                 $message->from(env('MAIL_USERNAME','nguyenthutrang.vtalb@gmail.com'),'Bảo hành Flextfit');
              });

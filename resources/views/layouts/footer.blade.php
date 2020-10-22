@@ -4,14 +4,14 @@
                 <div class="row-master">
                     <div class="col-12 col-md-3">
                         <div class="f-logo">
-                            <a href="" title=""><img src="images/Logo.png" alt=""></a>
+                            <a href="https://flexfit.vn" title=""><img src="images/logo.png" alt=""></a>
                         </div>
                     </div>
-                    <div class="col-12 col-md-9">
+                    <!-- <div class="col-12 col-md-9">
                         <div class="f-txt">
                             In hac habitasse platea dictumst. Vivamus adipiscing fermentum quam volutpat aliquam. Integer et elit eget elit.
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="row-master">
                     <div class="col-12 col-md-3">
@@ -67,7 +67,7 @@
                             <div class="f-content">
                                 <form action="">
                                     <div class="box-input">
-                                        <input type="text" placeholder="Email của bạn">
+                                        <input type="text" placeholder="Email">
                                     </div>
                                     <div class="box-input">
                                         <input type="submit" class="btn-submit" value="Đăng ký">
@@ -91,11 +91,11 @@
                             <a href="" title=""><img src="images/Logo.png" alt=""></a>
                         </div>
                     </div>
-                    <div class="col-12 col-md-9">
+                    <!-- <div class="col-12 col-md-9">
                         <div class="f-txt">
                             In hac habitasse platea dictumst. Vivamus adipiscing fermentum quam volutpat aliquam. Integer et elit eget elit.
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="row-master">
                     <div class="col-12 col-md-3">
@@ -151,7 +151,7 @@
                             <div class="f-content">
                                 <form action="">
                                     <div class="box-input">
-                                        <input type="text" placeholder="Email của bạn">
+                                        <input type="text" placeholder="Email">
                                     </div>
                                     <div class="box-input">
                                         <input type="submit" class="btn-submit" value="Registration">

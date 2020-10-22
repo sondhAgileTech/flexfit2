@@ -10,13 +10,14 @@
     <link rel="stylesheet" href="{{asset('css/index.css')}}">
 </head>
 <body>
-    <section class="section-guarantee">
+    <!-- <section class="section-guarantee">
         <img src="{{url('/images/img1.jpg')}}" alt="">
-    </section>
+    </section> -->
     <section class="section-thanks">
-        <img src="{{url('/images/img2.jpg')}}" alt="">
+        <!-- <img src="{{url('/images/img2.jpg')}}" alt=""> -->
+        <!-- <h5 style="float:right;margin-right:65px;">Thông tin bảo hành</h5> -->
         <div class="box-qr">
-            <div class="qr-code" style="width:220px;">
+            <div class="qr-code" style="width:200px;">
                 <img class="test" src="data:image/png;base64, {!! base64_encode(QrCode::format('png')
                         ->merge('images/logo-flextfit.jpg', 0.2, true)
                         ->size(400)->errorCorrection('H')

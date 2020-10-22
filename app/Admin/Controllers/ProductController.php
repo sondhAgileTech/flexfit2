@@ -84,7 +84,7 @@ class ProductController extends Controller
         $grid->id('Id');
         $grid->name('Tên Sản Phẩm');
         $grid->provider('Nhà Cung Cấp');
-        $grid->status_maitain_product('Trạng Thái')->using([true => 'Bảo Trì', false => 'Không Bảo Trì']);
+        $grid->status_maitain_product('Trạng Thái')->using([true => 'Bảo hành', false => 'Bảo trì']);
 
         return $grid;
     }
@@ -101,7 +101,7 @@ class ProductController extends Controller
         $show->id('Id');
         $show->name('Tên Sản Phẩm');
         $show->provider('Nhà Cung Cấp');
-        $show->status_maitain_product('Trạng Thái')->using([true => 'Bảo Trì', false => 'Không Bảo Trì']);
+        $show->status_maitain_product('Trạng Thái')->using([true => 'Bảo Hành', false => 'Không Bảo Hành']);
     
         return $show;
     }
@@ -118,7 +118,7 @@ class ProductController extends Controller
             'required' => 'Xin vui lòng nhập tên sản phẩm.'
         ]);
         $form->text('provider', 'Nhà Cung Cấp');
-        $form->select('status_maitain_product', 'Trạng Thái')->options([true => 'Bảo Trì', false => 'Không Bảo Trì'])->default(true);
+        $form->select('status_maitain_product', 'Trạng Thái')->options([true => 'Bảo Hành', false => 'Không Bảo Hành'])->default(true);
 
         return $form;
     }

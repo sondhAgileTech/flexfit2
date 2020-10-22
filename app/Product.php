@@ -8,6 +8,12 @@ class Product extends Model
 {
     //
     protected $table = 'product';
+    protected $primaryKey = 'id';
+
+    protected $fillable = [
+        'name', 'provider',
+        'status_maitain_product'
+    ];
 
     public static function getSearch($q)
     {

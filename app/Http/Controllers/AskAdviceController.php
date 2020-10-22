@@ -14,14 +14,17 @@ class AskAdviceController extends Controller
        $validatedData = $request->validate([
         'name' => 'required',
         'phone' => 'required',
+        'email' => 'required'
         ]);
 
         $name = $request->input('name');
         $phone = $request->input('phone');
+        $email = $request->input('email');
         $contract_code = $request->input('contract_code');
         $data = AskAdvice::create([
             'name' => $name,
             'phone' => $phone,
+            'email' => $email,
             'contract_code' => $contract_code
         ]);
 

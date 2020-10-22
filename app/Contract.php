@@ -8,6 +8,16 @@ class Contract extends Model
 {
     //
     protected $table = 'contract';
+    protected $primaryKey = 'id';
+
+    protected $fillable = [
+        'contract_code', 'name_customer',
+        'construction_items', 'phone',
+        'address', 'email','status_mainten','finish_date',
+        'language',
+        'products'
+    ];
+
 
     public function product_list()
     {

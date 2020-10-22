@@ -14,6 +14,12 @@ use Encore\Admin\Layout\Content;
 use Encore\Admin\Show;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
+use App\Admin\Extensions\Tools\ImportButton;
+use App\Admin\Actions\Member\ImportAction;
+use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\Member\ImportMember;
+
 class ContractController extends Controller
 {
     use HasResourceActions;
@@ -102,8 +108,33 @@ class ContractController extends Controller
             return date('d/m/Y', strtotime($date));
         });
         $grid->language('Ngôn Ngữ');
+        
+        $grid->filter(function ($filter) {
+            $filter->disableIdFilter();
+            $filter->like('contract_code', 'Tìm kiếm Mã hợp đồng');
+            $filter->like('name_customer', 'Tìm kiếm Tên khách hàng');
+            $filter->like('phone', 'Tìm kiếm Số điện thoại');
+        });
+
+        $grid->tools(function ($tools) {
+            $tools->append(new ImportButton());
+        });
 
         return $grid;
+    }
+
+    //import excel
+    protected function import(Content $content, Request $request)               
+    {      
+        
+        try{
+            // $request ...
+            $file = $request-> file('file');
+            Excel::import(new ImportMember, $file);
+        
+        }catch (\Exception $e){
+
+        }                                  
     }
 
     /**
@@ -152,7 +183,7 @@ class ContractController extends Controller
                           <td>'.date('d/m/Y', strtotime($this->finish_date.' + 3 months')).'</td>
                           <td>'.date('d/m/Y', strtotime($this->finish_date.' + 6 months')).'</td>
                           <td>'.date('d/m/Y', strtotime($this->finish_date.' + 12 months')).'</td>
-                          <td>'.(($data->status_maitain_product)?'Bảo Trì':'Không Bảo Trì').'</td>
+                          <td>'.(($data->status_maitain_product)?'Bảo Hành':'Không Bảo Trì').'</td>
                         </tr>';
                         $i++;
                     }
@@ -166,9 +197,13 @@ class ContractController extends Controller
             if($data)
             {
                 $token = base64_encode(TokenGenerator::encrypt($data->id.'<>'.$data->contract_code.'<>'.$data->email, env('APP_KEY'), 256));
+                $qrcode = base64_encode(QrCode::format('png')
+                ->merge('http://baohanh.flexfit.vn/images/logo-flextfit.jpg', 0.2, true)
+                ->size(400)->errorCorrection('H')
+                ->generate(env('APP_URL').'/'.$token));
                 $url = env('APP_URL').'/hop-dong/'.$data->contract_code;
-                $html = QrCode::size(400)->generate(env('APP_URL').'/'.$token);
-                $html .= '<a href="/api/download/'.$data->contract_code.'" target="_blank">Click here to download file bảo hành</button>';
+                $html = '<img src="data:image/png;base64, '.$qrcode.'">';
+                $html .= '<a href="/api/download/'.$data->contract_code.'" target="_blank">Click vào đây để download file bảo hành</button>';
                 $html .= '<table class="table">';
                 $html .= '<tr><td><strong>Đường Dẫn</strong></td><td> <a href="'.$url.'" target="_blank">'.$url.'</a></td></tr>';
                 $html .= '<tr><td><strong>Token</strong></td><td> '.$token.'</td></tr>';
@@ -230,6 +265,10 @@ class ContractController extends Controller
         })->rules('required', [
             'required' => 'Xin vui lòng chọn sản phẩm.'
         ])->ajax('/'.config('admin.route.prefix').'/api/product');
+
+        $form->file('file_upload','Upload file')->name(function ($file) {
+            return'File_bao_hanh.'.$file->guessExtension();
+        });
         // $form->hasMany('product_list', 'Danh Sách Sản Phẩm', function (Form\NestedForm $form) {
         //     $form->select('product_id','Sản Phẩm')->options(Product::all()->pluck('name','id'));
         //     $form->datetime('selected_at', 'Ngày bảo hành')->default(date('Y-m-d H:i:s'));

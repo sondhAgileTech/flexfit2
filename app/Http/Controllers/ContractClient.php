@@ -12,6 +12,7 @@ use App\Library\TokenGenerator;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use PDF;
+use Illuminate\Support\Facades\Storage;
 
 class ContractClient extends Controller
 {
@@ -19,12 +20,13 @@ class ContractClient extends Controller
         $data = Contract::where(['contract_code' => $request->id])->first();
         if($data) {
             $now = date('Y-m-d H:i:s');
-            // $products = Product::getProducts($data->id);
             if(is_array($data->products)) {
                 $listProduct = [];
                 foreach ($data->products as $item) {
                     $product = Product::where('id',(int)$item)->first();
-                    $listProduct[] = $product;
+                    if($product) {
+                        $listProduct[] = $product;
+                    }
                 }
             }
             if($data->language === 'vi') {
@@ -58,16 +60,16 @@ class ContractClient extends Controller
                 $data = Contract::where([
                     'id' => $dataList[0],
                     'contract_code' => $dataList[1],
-                    'email' => $dataList[2]
                 ])->first();
                 if($data) {
                     $now = date('Y-m-d H:i:s');
-                    // $products = Product::getProducts($data->id);
                     if(is_array($data->products)) {
                         $listProduct = [];
                         foreach ($data->products as $item) {
                             $product = Product::where('id',(int)$item)->first();
-                            $listProduct[] = $product;
+                            if($product) {
+                                $listProduct[] = $product;
+                            }
                         }
                     }
 
@@ -118,11 +120,22 @@ class ContractClient extends Controller
         if($data){
             $token = base64_encode(TokenGenerator::encrypt($data->id.'<>'.$data->contract_code.'<>'.$data->email, env('APP_KEY'), 256));
             $customPaper = array(0,0,300,520);
+
+            // return view('pdf_contract',compact('token'));
             // pass view file
             $pdf = PDF::loadView('pdf_contract', compact('token'))->setPaper($customPaper, 'landscape')->setOptions(['isRemoteEnabled' => true,'logOutputFile'=>storage_path('logs/pdf.log'),'tempDir'=>storage_path('logs/')]);
 
             //download pdf
             return $pdf->stream();
+        }
+    }
+
+    public static function getFileContract($id_contract) {
+        $data = Contract::where('contract.contract_code', '=', $id_contract)->first();
+        if($data){
+            if($data->file_upload) {
+                return Storage::download($data->file_upload);
+            }
         }
     }
 }

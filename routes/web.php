@@ -21,3 +21,4 @@ Route::post('/changed-time-maintain', 'ContractProductController@changedTimeMain
 Route::post('/changed-time-maintain-contract', 'ContractClient@changedTimeMainTainContract');
 Route::get('/mail/get-mail-html', 'MailController@getHtmlBasic');
 Route::get('/api/download/{id_contract}','ContractClient@getPdfFile')->where('id', '[A-Za-z0-9\-]+');
+Route::get('/api/download_file/{id_contract}','ContractClient@getFileContract')->where('id_contract', '[A-Za-z0-9\-]+');

@@ -30,6 +30,11 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <script>
+
+      $("input#phone").keypress(function(event) {
+        return /\d/.test(String.fromCharCode(event.keyCode));
+      });
+
       $(document).ready(function() {
         $( ".datepicker" ).datepicker({
           dateFormat: 'dd/mm/yy',
@@ -96,6 +101,7 @@
             e.preventDefault();
             var name = '';
             var phone = '';
+            var email = '';
             var contract_code = $(this).attr('data-contract');
             var language = $(this).attr('data-type');
             if(jQuery('#name').val() == '') {
@@ -110,7 +116,13 @@
             } else {
                phone = jQuery('#phone').val();
             }
-            if(name && phone && contract_code) {
+            if(jQuery('#email').val() == '') {
+              $('#email').addClass('error');
+              $('.success-data').text('');
+            } else {
+               email = jQuery('#email').val();
+            }
+            if(name && phone && email && contract_code) {
               $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -122,14 +134,17 @@
                 data: {
                     name: jQuery('#name').val(),
                     phone: jQuery('#phone').val(),
+                    email: jQuery('#email').val(),
                     contract_code: contract_code
                 },
                 success: function(result){
                   if(result.success.status == 200) {
                     $('#name').removeClass('error');
                     $('#phone').removeClass('error');
+                    $('#email').removeClass('error');
                     $('#name').val('');
                     $('#phone').val('');
+                    $('#email').val('');
                     if(language == 'vi') {
                       swal({
                         title: "Gửi thành công",
@@ -237,13 +252,13 @@
                   if(result.success.status == 200) {
                       if(language == 'en') {
                         swal({
-                          title: "Changed success",
+                          title: "Flexfit staff will contact you to reconfirm the warranty schedule with you. Sincerely thank you!",
                           icon: "success",
                           button: "Close",
                         });
                       } else {
                         swal({
-                          title: "Thay đổi thành công",
+                          title: "Nhân viên của Flexfit sẽ liên hệ để xác nhận lại lịch bảo hành với quý khách . Trân trọng cảm ơn!",
                           icon: "success",
                           button: "Đóng",
                         });

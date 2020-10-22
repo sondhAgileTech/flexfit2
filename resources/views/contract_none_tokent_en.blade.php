@@ -85,7 +85,7 @@
                         ->size(300)->errorCorrection('H')
                         ->generate(env('APP_URL').'/'.$token)) !!} ">
                     </div>
-                    <a href="" title="">Click to download warranty file</a>
+                    <a href='/api/download_file/{{$data->contract_code}}' title="" target="_blank">Click to download warranty file</a>
                 </div>
             </div>
         </div>
@@ -106,7 +106,7 @@
                             <td>Maintenance</td>
                             <td>
                                 <i class="glyphicon glyphicon-calendar"></i>
-                                 Đổi lịch kiểm tra
+                                Change warranty time
                                 <div class="input-group date" >
                                         <input data-now = "{{ date('Y/m/d', strtotime($now)) }}"  data-first="{{ date('Y/m/d', strtotime($data->finish_date.' + 3 months')) }}" data-seccond = "{{ date('Y/m/d', strtotime($data->finish_date.' + 6 months')) }}"  data-third = "{{ date('Y/m/d', strtotime($data->finish_date.' + 12 months')) }}" class="form-control date-change-maintain datepicker"  type="text">
                                         <input class="data-contract-product" data-contact="{{ $data->id }}" data-code="{{$data->contract_code}}" type="hidden"> 
@@ -179,63 +179,26 @@
                     <div class="box-form">
                         <div class="title">We'd love to hear from you</div>
                         <div class="txt">
-                            Your suggestions are very important to us Flexfit is always looking for ways to improve the quality of service to be able to serve in the best way.
+                            Please send these incentives to friends and relatives to experience Flextfit products and services.
                         </div>
                         <span class="success-data"></span>
                         <div class="row-input">
 
                             <div class="box-input">
-                                <input type="text"  id="name" name="name" placeholder="your name">
+                                <input type="text"  id="name" name="name" placeholder="Your name">
                             </div>
-
                             <div class="box-input">
-                                <input type="text" id="phone" name="phone" placeholder="your number">
+                                <input type="text" id="phone" name="phone" placeholder="Phone">
+                            </div>
+                            <div class="box-input" style="width:100% !important;">
+                                <input type="email" id="email" name="email" placeholder="Email">
                             </div>
                         </div>
                         <div class="box-input">
-                            <input type="button" data-type="{{$data->language}}" data-contract="{{$data->contract_code}}" class="btn-submit" id="register-ask-advice" value="Send feedback">
+                            <input type="button" data-type="{{$data->language}}" data-contract="{{$data->contract_code}}" class="btn-submit" id="register-ask-advice" value="Send incentives">
                         </div>
                     </div>
                 </form>
-            </div>
-        </div>
-    </section>
-    <section>
-        <div class="container-master">
-            <div class="news-other">
-                <div class="news-other-title">related news</div>
-                <div class="news-other-content">
-                    <div class="box-item">
-                        <div class="item">
-                            <div class="item-img">
-                                <a href="" class="imgc" title=""><img src="images/1.png" alt=""></a>
-                            </div>
-                            <div class="item-body">
-                                <div class="item-title"><a href="" title="">Product's name</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="box-item">
-                        <div class="item">
-                            <div class="item-img">
-                                <a href="" class="imgc" title=""><img src="images/1.png" alt=""></a>
-                            </div>
-                            <div class="item-body">
-                                <div class="item-title"><a href="" title="">Product's name</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="box-item">
-                        <div class="item">
-                            <div class="item-img">
-                                <a href="" class="imgc" title=""><img src="images/1.png" alt=""></a>
-                            </div>
-                            <div class="item-body">
-                                <div class="item-title"><a href="" title="">Product's name</a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
