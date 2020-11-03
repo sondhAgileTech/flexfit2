@@ -1,0 +1,17 @@
+﻿@import "font-face";
+@import "mixin";
+@import "common";
+@import "grid";
+
+
+html{font-size: 10px;}
+body{color: #333;font-family: $font-fam;font-weight: 400;font-size: 15px;background-color: #fff;}
+@media (max-width: 767px){
+    html{font-size: 9px;}
+}
+
+
+@import "header";
+@import "footer";
+
+

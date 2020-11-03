@@ -1,0 +1,247 @@
+/*--------Mixin--------*/
+$blue: #31BAF5;
+$bluehover:#2B9ACF ;
+$bluebold: #1F1B59;
+$color: #1F1B59;
+$color-2: #31BAF5;
+$font-fam: 'Roboto';
+//Flex-Width
+@mixin flex-width($width) {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 $width;
+  flex: 0 0 $width;
+  max-width: $width;
+}
+//Border-radius
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+//Scroll Bar
+@mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white, 50%)) {
+  ::-webkit-scrollbar {
+    width:  $size;
+    height: $size;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: $foreground-color;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: $background-color;
+  }
+  // For Internet Explorer
+  body {
+    scrollbar-face-color: $foreground-color;
+    scrollbar-track-color: $background-color;
+  }
+}
+
+//Animation
+@mixin animation($animation){
+  -webkit-animation: $animation; /* Safari 4.0 - 8.0 */
+  animation: $animation;
+}
+
+@mixin keyframes($animationName)
+{
+  @-webkit-keyframes #{$animationName} {
+    @content;
+  }
+  @-moz-keyframes #{$animationName}  {
+    @content;
+  }
+  @-o-keyframes #{$animationName} {
+    @content;
+  }
+  @keyframes #{$animationName} {
+    @content;
+  }
+}
+
+
+
+//Box-shadow
+@mixin box-shadow($boxshadow) {
+  -webkit-box-shadow: $boxshadow;
+  -moz-box-shadow: $boxshadow;
+  box-shadow: $boxshadow;
+}
+
+// Transform
+@mixin transform($transforms) {
+  -moz-transform: $transforms;
+  -o-transform: $transforms;
+  -ms-transform: $transforms;
+  -webkit-transform: $transforms;
+  transform: $transforms;
+}
+
+// rotate
+@mixin rotate($deg) {
+  @include transform(rotate(#{$deg}deg));
+}
+
+// scale
+@mixin scale($scale) {
+  @include transform(scale($scale));
+}
+
+// translate
+@mixin translate($x, $y) {
+  @include transform(translate($x, $y));
+}
+
+// skew
+@mixin skew($x, $y) {
+  @include transform(skew(#{$x}deg, #{$y}deg));
+}
+
+//transform origin
+@mixin transform-origin($origin) {
+  moz-transform-origin: $origin;
+  -o-transform-origin: $origin;
+  -ms-transform-origin: $origin;
+  -webkit-transform-origin: $origin;
+  transform-origin: $origin;
+}
+
+@mixin transition($time) {
+  transition: all $time !important;
+  -o-transition: all $time !important;
+  -ms-transition: all $time !important;
+  -webkit-transition: all $time !important;
+  -moz-transition: all $time !important;
+}
+
+@mixin gradient-right($color1, $color2) {
+  background: $color1; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left, $color1, $color2); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, $color1, $color2); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, $color1, $color2); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to right, $color1, $color2); /* Standard syntax */
+}
+
+@mixin gradient-top($color1, $color2) {
+  background: $color1; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(bottom, $color1, $color2); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(top, $color1, $color2); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(top, $color1, $color2); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to top, $color1, $color2); /* Standard syntax */
+
+}
+
+//Filter
+@mixin filter($filter-type) {
+  -webkit-filter: $filter-type;
+  -moz-filter: $filter-type;
+  -ms-filter: $filter-type;
+  -o-filter: $filter-type;
+  filter: $filter-type;
+}
+
+//Place Holder
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+
+  &:-moz-placeholder { /* Firefox 18- */
+    @content;
+  }
+
+  &::-moz-placeholder { /* Firefox 19+ */
+    @content;
+  }
+
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
+
+//Box image
+
+@mixin image($dp,$w,$h) {
+ display: $dp;
+  width: $w;
+  height: $h;
+
+}
+
+%transition {
+  transition: all 0.3s !important;
+  -o-transition: all 0.3s !important;
+  -ms-transition: all 0.3s !important;
+  -webkit-transition: all 0.3s !important;
+  -moz-transition: all 0.3s !important;
+}
+%d-flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+%imgff {
+  height: 100%;
+  width: 100%;
+  object-fit: cover
+}
+
+%text-overflow {
+  display: block;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+%btn-animation {
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  display: inline-block;
+
+  &:after, &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    height: 50%;
+    width: 0;
+    background: #2B9ACF;
+    transition: width 0.3s ease-in-out;
+  }
+
+  &:before {
+    left: auto;
+    right: 0;
+    top: auto;
+    bottom: 0;
+  }
+
+  span {
+    position: relative;
+    z-index: 2;
+    border-radius: 4px;
+    padding: 1rem 3.5rem;
+    border: 1px solid $blue;
+    display: block;
+    color: $blue;
+    transition: color 0.3s ease-in-out;
+  }
+
+  &:hover {
+    span {
+      border-color: $bluehover;
+      color: #fff;
+    }
+
+    &:after, &:before {
+      width: 100%;
+    }
+  }
+}

@@ -77,6 +77,10 @@ $(function () {
     $('[data-toggle="popover"]').popover();
 });
 
+$(document).on('click', '.download-pdf', function (event) {
+    
+});
+
 (function ($) {
     $.fn.admin = LA;
     $.admin = LA;

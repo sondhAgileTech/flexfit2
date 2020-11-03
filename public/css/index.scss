@@ -1,0 +1,29 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+}
+
+.section-guarantee{
+    img{
+        max-width: 100%;
+    }
+}
+
+.section-thanks{
+    position: relative;
+    img{
+        max-width: 100%;
+    }
+    .box-qr{
+        position: absolute;
+        top: 25%;
+        right: 15%;
+        .qr-code{
+            width: 200px;
+            height: 200px;
+            background: #000;
+        }
+    }
+}

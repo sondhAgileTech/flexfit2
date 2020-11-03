@@ -1,0 +1,160 @@
+#ss-header{
+    .ss-navbar{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 90px;
+        &-logo{
+            a{
+                display: inline-block;
+                img{
+                    max-height: 25px;
+                }
+            }
+        }
+        &-menu{
+            >ul{
+                display: flex;
+                flex-wrap: wrap;
+                >li{
+                    &:hover,&.active{
+                        >a{
+                            color: #666;
+                        }
+                        &:before{
+                            width: 30px;
+                        }
+                    }
+                    position: relative;
+                    &:before{
+                        content: '';
+                        position: absolute;
+                        bottom: 0;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        height: 1px;
+                        background: $color-2;
+                        width: 0;
+                        transition: all .3s ease-in-out;
+                    }
+                    >a{
+                        display: inline-block;
+                        font-size: 1.5rem;
+                        color: #999999;
+                        text-transform: uppercase;
+                        padding: 0 10px;
+                        line-height: 1.7;
+                        transition: all .3s ease-in-out;
+                    }
+                }
+            }
+        }
+        .menu-toggle {
+            display: none;
+            width: 40px;
+            height: 30px;
+            position: absolute;
+            top: 18px;
+            right: 15px;
+            cursor: pointer; 
+            &.on{
+                .one {
+                    transform: rotate(45deg) translate(6px, 8px);   
+                }
+                .two {
+                    opacity: 0;
+                }
+                .three {
+                    transform: rotate(-45deg) translate(4px, -8px); }
+            }
+            .one,.two,.three {
+                width: 100%;
+                height: 3px;
+                background: $color;
+                margin: 6px auto;
+                backface-visibility: hidden;
+                transition: 0.3s; 
+            }
+        }
+    }
+}
+
+@media (max-width: 991px){
+    #ss-header{
+        position: relative;
+        background: #fff;
+        z-index: 2;
+        .ss-navbar{
+            height: 67px;
+            min-height: 67px;
+            .menu-toggle{
+                right: 40px;
+                display: block !important;
+            }
+            &-menu{
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                z-index: 2;
+                background: #fff;
+                transition: all .3s ease-in-out;
+                transform: translateY(15px);
+                opacity: 0;
+                visibility: hidden;
+                &.active{
+                    transform: translateY(0);
+                    opacity: 1;
+                    visibility: visible;
+                }
+                >ul{
+                    >li{
+                        width: 100%;
+                        &::before{
+                            display: none;
+                        }
+                        >a{
+                            padding: 9px 40px;
+                            display: block;
+                            border-top: 1px solid #eaeaea;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 767px){
+    #ss-header{
+        .ss-navbar{
+            .menu-toggle{right: 75px}
+            &-menu{
+                >ul{
+                    >li{
+                        >a{
+                            padding: 9px 75px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 575px){
+    #ss-header{
+        .ss-navbar{
+            .menu-toggle{right: 15px}
+            &-menu{
+                >ul{
+                    >li{
+                        >a{
+                            padding: 9px 15px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
