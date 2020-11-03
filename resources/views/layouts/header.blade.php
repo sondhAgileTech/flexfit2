@@ -12,12 +12,13 @@
                     </div>
                     <div class="ss-navbar-menu">
                         <ul>
-                            <li class="active"><a href="https://flexfit.vn/ve-chung-toi" title="">Về chúng tôi</a></li>
-                            <li><a href="https://flexfit.vn/tktb" title="">Thiết kế tiêu biểu</a></li>
-                            <li><a href="https://flexfit.vn/du-an" title="">Kiến trúc sư</a></li>
-                            <li><a href="https://flexfit.vn/quy-trinh" title="">Quy trình</a></li>
-                            <li><a href="https://flexfit.vn/tin-tuc" title="">Tin tức</a></li>
-                            <li><a href="https://flexfit.vn/lien-he" title="">Liên hệ</a></li>
+                            <li class="active"><a href="https://flexfit.vn/ve-chung-toi" title="Về chúng tôi">Về chúng tôi</a></li>
+                            <li><a href="https://flexfit.vn/tktb" title="Thiết kế tiêu biểu">Thiết kế tiêu biểu</a></li>
+                            <li><a href="https://flexfit.vn/du-an" title="Dự án">Dự án</a></li>
+                            <li><a href="https://flexfit.vn/quy-trinh" title="Quy trình">Quy trình</a></li>
+                            <li><a href="https://flexfit.vn/tin-tuc" title="Tin tức">Tin tức</a></li>
+                            <li><a href="https://flexfit.vn/thiet-ke-24h-cung-flexfit" title="Thiết kế 24h">Thiết kế 24h</a></li>
+                            <li><a href="https://flexfit.vn/thiet-ke-24h-cung-flexfit" title="Shopping" class="">SHOPPING <i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
                 </nav>

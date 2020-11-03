@@ -267,8 +267,10 @@ class ContractController extends Controller
         ])->ajax('/'.config('admin.route.prefix').'/api/product');
 
         $form->file('file_upload','Upload file')->name(function ($file) {
-            return'File_bao_hanh.'.$file->guessExtension();
+            return 'File_bao_hanh.'.$file->guessExtension();
         });
+
+        // $form->file('file_upload','Upload file')->move($dir, $name);
         // $form->hasMany('product_list', 'Danh Sách Sản Phẩm', function (Form\NestedForm $form) {
         //     $form->select('product_id','Sản Phẩm')->options(Product::all()->pluck('name','id'));
         //     $form->datetime('selected_at', 'Ngày bảo hành')->default(date('Y-m-d H:i:s'));

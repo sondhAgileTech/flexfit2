@@ -130,11 +130,15 @@ class ContractClient extends Controller
         }
     }
 
-    public static function getFileContract($id_contract) {
-        $data = Contract::where('contract.contract_code', '=', $id_contract)->first();
+    public static function getFileContract(Request $request) {
+        $contract_code = $request->input('contract_code');
+        $data = Contract::where('contract.contract_code', '=', $contract_code)->first();
         if($data){
             if($data->file_upload) {
-                return Storage::download($data->file_upload);
+                if($data) {
+                    $fileName = Storage::getMetaData($data->file_upload);
+                    return response()->json(['success' => ['status' => 200, 'file_name'=>$fileName]]);
+                } 
             }
         }
     }

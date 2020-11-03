@@ -66,7 +66,7 @@ class SentMailCron extends Command
                 $message->to('hcns@flexfit.vn')->subject
                    ('Danh sách sản phẩm sắp đến hạn bảo hành');
                 $message->from(env('MAIL_USERNAME','nguyenthutrang.vtalb@gmail.com'),'Bảo hành Flextfit');
-             });
+            });
         }
 
         \Log::info("Cron is working fine!");

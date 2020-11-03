@@ -147,13 +147,13 @@
                     $('#email').val('');
                     if(language == 'vi') {
                       swal({
-                        title: "Gửi thành công",
+                        title: "Gửi ưu đãi thành công",
                         icon: "success",
                         button: "Đóng",
                       });
                     } else {
                       swal({
-                          title: "Send success",
+                          title: "Offer successfully sent",
                           icon: "success",
                           button: "Đóng",
                       });
@@ -161,13 +161,13 @@
                   } else {
                     if(language == 'vi') {
                       swal({
-                        title: "Gửi Thất bại",
+                        title: "Gửi ưu đãi Thất bại",
                         icon: "success",
                         button: "Đóng",
                       });
                     } else {
                       swal({
-                          title: "Sent Fail",
+                          title: "Offer failed",
                           icon: "success",
                           button: "Đóng",
                       });
@@ -264,6 +264,32 @@
                         });
                       }
                     $(this).parent().find('.datepicker').css('border','none');
+                  }
+                }});
+            }
+          });
+
+
+          $(".download-file").click(function(e) {
+            e.preventDefault();
+            var contract_code = $(this).attr("data-code");
+            console.log(contract_code);
+            if(contract_code) {
+              $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+              });
+
+              jQuery.ajax({
+                url: "{{ url('/api/download_file') }}",
+                method: 'POST',
+                data:{
+                  contract_code
+                },
+                success: function(result){
+                  if(result.success.status == 200) {
+                    window.open(`storage/app/${result.success.file_name.path}`, '_blank');
                   }
                 }});
             }

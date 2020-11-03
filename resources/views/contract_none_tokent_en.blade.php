@@ -37,11 +37,24 @@
 .error {
     border:2px solid #FF0000 !important;
 }
+.question-insuarance {
+    text-align: center;
+}
+#ss-header .ss-navbar-menu > ul > li > a {
+    color:#a6a6a6;
+    letter-spacing: .3px;
+}
+#ss-header .ss-navbar-menu > ul > li:hover > a {
+    color:#404040;
+}
+#ss-header .ss-navbar-menu > ul > li.active > a {
+    color:#404040;
+}
 </style>
 <main id="insuarance-wrapper">
     <section class="section-banner">
         <div class="imgc">
-            <img src="images/b1.jpg" alt="">
+            <img src="images/trang-bao-hanh_kfzpzv.jpg" alt="">
             <div class="text">
                 <p>WARRANTY INFORMATION</p>
                 <p>code {{$data->contract_code}}</p>
@@ -67,7 +80,7 @@
                     </div>
                     <div class="item">
                         <span>Contract Code:</span>
-                        <span>code {{$data->contract_code}}</span>
+                        <span>{{$data->contract_code}}</span>
                     </div>
                     <div class="item">
                         <span>Contract category:</span>
@@ -173,6 +186,13 @@
     </section>
     <section>
         <div class="container-master">
+            <div class="question-insuarance">
+                <img src="images/voucher-img.png"/>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container-master">
             <div class="form-request">
                 <form>
                     {{ csrf_field()}}
@@ -188,7 +208,7 @@
                                 <input type="text"  id="name" name="name" placeholder="Your name">
                             </div>
                             <div class="box-input">
-                                <input type="text" id="phone" name="phone" placeholder="Phone">
+                                <input type="number" id="phone" name="phone" placeholder="Phone">
                             </div>
                             <div class="box-input" style="width:100% !important;">
                                 <input type="email" id="email" name="email" placeholder="Email">
