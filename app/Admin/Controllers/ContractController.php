@@ -120,7 +120,7 @@ class ContractController extends Controller
             $tools->append(new ImportButton());
         });
 
-        return $grid;
+         return $grid;
     }
 
     //import excel
