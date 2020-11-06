@@ -47,7 +47,7 @@
         </div>
 
         <div style="margin-left: 100px;margin-right: 265px;">
-            <a href="http://baohanh.flexfit.vn/mail/received_gift">
+            <a href="http://baohanh.flexfit.vn/mail/received_gift/{{$advice_id}}">
                 <img src="{{url('/images/img_gift_2.png')}}"/>
             </a>
         </div>

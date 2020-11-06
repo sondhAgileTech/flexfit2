@@ -40,6 +40,10 @@
             background: linear-gradient(to right, transparent, rgba(255,255,255,1) 66%);
         }
 
+        .error {
+            border:2px solid #FF0000 !important;
+        }
+
         .form-right-received{
             background-image: linear-gradient(to right, transparent 48%, #fff 41%);
         }
@@ -99,40 +103,44 @@
                         Để Flexfit có thể hỗ trợ quý khách tốt nhất, quý khách vui lòng cung cấp một số thông tin dưới đây:
                     </div>
                 </p>
-                </br>
+                <br/>
                 <p>
-                <form>
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1">1.Loại hình công trình</label>
-                        <select class="form-control form-control-lg" id="type-of-project" name="typeProject">
-                            <option value="Nhà mặt đất">Nhà mặt đất</option>
-                            <option value="Chung cư">Chung cư</option>
-                            <option value="Văn phòng">Văn phòng</option>
-                        </select>
-                    </div>
-                    <div class="form-group form-hidden">
-                        <label>Diện tích sàn</label>
-                        <input type="text" class="form-control" id="floor-area" name="floor-area" placeholder="(Nhập tại đây)">
-                    </div>
-                    <div class="form-group">
-                        <label>2.Địa chỉ công trình</label>
-                        <input type="text" class="form-control" id="construction-address" name="construction-address" placeholder="(Nhập tại đây)">
-                    </div>
-                    <div class="form-group">
-                        <label>3.Số điện thoại liên hệ</label>
-                        <input type="text" class="form-control" id="phone" name="phone" placeholder="(Nhập tại đây)">
-                    </div>
-
-                    <p>
-                        <div class="description-flexfit">
-                            Flexfit cảm ơn quý khách đã cung cấp thông tin, nhân viên của chúng tôi sẽ liên hệ với quý khách trong thời gian sớm nhất !
+                    <form>
+                        <input type="hidden" name="advice_id" value="{{$id}}" id="advice_id">
+                        <input type="hidden" name="contract_code" value="{{$contract_code}}" id="contract_code">
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">1.Loại hình công trình</label>
+                            <select class="form-control form-control-lg" id="type-of-project" name="typeProject">
+                                <option value="">Chọn loại hình công trình</option>
+                                <option value="1">Nhà mặt đất</option>
+                                <option value="2">Chung cư</option>
+                                <option value="3">Văn phòng</option>
+                            </select>
                         </div>
-                    </p>
+                        <div class="form-group form-hidden">
+                            <label>Diện tích sàn (m2)</label>
+                            <input type="number" class="form-control" id="floor-area" name="floor-area" placeholder="(Nhập tại đây)">
+                        </div>
+                        <div class="form-group">
+                            <label>2.Địa chỉ công trình</label>
+                            <input type="text" class="form-control" id="construction-address" name="construction-address" placeholder="(Nhập tại đây)">
+                        </div>
+                        <div class="form-group">
+                            <label>3.Số điện thoại liên hệ</label>
+                            <input type="text" class="form-control" id="phone" name="phone" placeholder="(Nhập tại đây)">
+                        </div>
 
-                    <div class="text-center" style="margin-top: 40px;">
-                    <button type="submit" id="btn-send-info" class="btn">Gửi đi</button>
-                    </div>
-                </form>
+
+                        <p>
+                            <div class="description-flexfit">
+                                Flexfit cảm ơn quý khách đã cung cấp thông tin, nhân viên của chúng tôi sẽ liên hệ với quý khách trong thời gian sớm nhất !
+                            </div>
+                        </p>
+
+                        <div class="text-center" style="margin-top: 40px;">
+                        <button type="submit" id="btn-send-info" class="btn" data-type="vi">Gửi đi</button>
+                        </div>
+                    </form>
                 </p>
 
             </div>
@@ -147,7 +155,12 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
         $( "#type-of-project" ).change(function() {
-            $(".form-hidden").css('display','block');
+            var type = $(this).val();
+            if(type) {
+                $(".form-hidden").css('display','block');
+            } else {
+                $(".form-hidden").css('display','none');
+            }
         });
 
         $("#btn-send-info").click(function(e) {
@@ -156,12 +169,20 @@
             var floorArea = ''
             var constructionAddress = '';
             var phone = '';
+            var advice_id = '';
+            var contract_code = '';
+            var language = $(this).attr('data-type');
             // var contract_code = $(this).attr('data-contract');
+
+
+            advice_id = $('#advice_id').val();
+            contract_code = $('#contract_code').val();
 
             if($('#type-of-project').val() == '') {
                 $('#type-of-project').addClass('error');
                 $('.success-data').text('');
             } else {
+                $('#type-of-project').removeClass('error');
                 typeOfProject = $('#type-of-project').val();
             }
 
@@ -169,6 +190,7 @@
                 $('#phone').addClass('error');
                 $('.success-data').text('');
             } else {
+                $('#phone').removeClass('error');
                 phone = $('#phone').val();
             }
 
@@ -177,6 +199,7 @@
                 $('.success-data').text('');
             } else {
                 floorArea = $('#floor-area').val();
+                $('#floor-area').removeClass('error');
             }
 
             if($('#construction-address').val() == '') {
@@ -184,6 +207,7 @@
                 $('.success-data').text('');
             } else {
                 constructionAddress = $('#construction-address').val();
+                $('#construction-address').removeClass('error');
             }
             console.log("typeOfProject" + typeOfProject + "phone" + phone + "floorArea" + floorArea + "constructionAddress" + constructionAddress);
             if(typeOfProject && phone && floorArea && constructionAddress) {
@@ -196,6 +220,8 @@
                 url: "{{ url('/reciever-info') }}",
                 method: 'POST',
                 data: {
+                    advice_id: advice_id,
+                    contractCode: contract_code,
                     typeOfProject: typeOfProject,
                     phone: phone,
                     floorArea: floorArea,
@@ -204,26 +230,41 @@
                 },
                 success: function(result){
                   if(result.success.status == 200) {
-                      console.log("okay");
-                    // $('#name').removeClass('error');
-                    // $('#phone').removeClass('error');
-                    // $('#email').removeClass('error');
-                    // $('#name').val('');
-                    // $('#phone').val('');
-                    // $('#email').val('');
-                    // if(language == 'vi') {
-                    //   swal({
-                    //     title: "Gửi ưu đãi thành công",
-                    //     icon: "success",
-                    //     button: "Đóng",
-                    //   });
-                    // } else {
-                    //   swal({
-                    //       title: "Offer successfully sent",
-                    //       icon: "success",
-                    //       button: "Đóng",
-                    //   });
-                    // }
+                    $('#type-of-project').removeClass('error');
+                    $('#floor-area').removeClass('error');
+                    $('#construction-address').removeClass('error');
+                    $('#phone').removeClass('error');
+                    $('#type-of-project').val('');
+                    $('#phone').val('');
+                    $('#floor-area').val('');
+                    $('#construction-address').val('');
+                    if(language == 'vi') {
+                      swal({
+                        title: "Gửi ưu đãi thành công",
+                        icon: "success",
+                        button: "Đóng",
+                      });
+                    } else {
+                      swal({
+                          title: "Offer successfully sent",
+                          icon: "success",
+                          button: "Đóng",
+                      });
+                    }
+                  } else {
+                    if(language == 'vi') {
+                        swal({
+                            title: "Có lỗi xảy ra, vui lòng liên hệ quản trị viên",
+                            icon: "error",
+                            button: "Đóng",
+                        });
+                    } else {
+                        swal({
+                            title: "An error has occurred, please contact the administrator",
+                            icon: "error",
+                            button: "Đóng",
+                        });
+                    }
                   }
                 }});
             }
