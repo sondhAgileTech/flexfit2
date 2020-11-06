@@ -94,6 +94,22 @@ class AskAdviceController extends Controller
             }
         });
 
+		
+		$grid->column( 'Loại hình công trình')->display(function () {
+            if($this->type_of_project == 1) {
+                return 'Nhà mặt đất';
+            } elseif($this->type_of_project == 2) {
+				return 'Chung cư';
+			} elseif($this->type_of_project == 3) {
+				return 'Văn phòng';
+			} else {
+				return 'Không xác định';
+			}
+        });
+		
+		$grid->floor_area('Diện tích sàn (m2)');
+		$grid->construction_address('Địa chỉ công trình');
+		$grid->phone_received('Số điện thoại liên hệ');
         return $grid;
     }
 
