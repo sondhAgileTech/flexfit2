@@ -21,11 +21,12 @@ body {
 
 .section-thanks .box-qr {
   position: absolute;
-  top: 18%;
-  right: 6%;
+  top: 25%;
+  right: 15%;
 }
 
 .section-thanks .box-qr .qr-code {
+  width: 200px;
   height: 200px;
   background: #000;
 }

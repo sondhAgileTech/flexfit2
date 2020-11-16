@@ -244,6 +244,7 @@
                         icon: "success",
                         button: "Đóng",
                       });
+                      window.location.href = "https://flexfit.vn/tktb";
                     } else {
                       swal({
                           title: "Offer successfully sent",

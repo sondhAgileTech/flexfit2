@@ -18,7 +18,7 @@
                             <li><a href="https://flexfit.vn/quy-trinh" title="Quy trình">Quy trình</a></li>
                             <li><a href="https://flexfit.vn/tin-tuc" title="Tin tức">Tin tức</a></li>
                             <li><a href="https://flexfit.vn/thiet-ke-24h-cung-flexfit" title="Thiết kế 24h">Thiết kế 24h</a></li>
-                            <li><a href="https://flexfit.vn/thiet-ke-24h-cung-flexfit" title="Shopping" class="">SHOPPING <i class="fa fa-shopping-cart"></i></a></li>
+                            <li><a href="https://flexfit.vn/thiet-ke-24h-cung-flexfit" title="Shopping" class="button_shopping">SHOPPING <i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
                 </nav>

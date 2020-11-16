@@ -17,6 +17,10 @@
                 display: flex;
                 flex-wrap: wrap;
                 >li{
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    padding: 0 5px;
                     &:hover,&.active{
                         >a{
                             color: #666;
@@ -25,7 +29,6 @@
                             width: 30px;
                         }
                     }
-                    position: relative;
                     &:before{
                         content: '';
                         position: absolute;
@@ -45,6 +48,16 @@
                         padding: 0 10px;
                         line-height: 1.7;
                         transition: all .3s ease-in-out;
+                    }
+                    .button_shopping{
+                        padding: 7px 10px;
+                        background: #31baf5;
+                        border-radius: 4px;
+                        color: #fff;
+                        &:hover{
+                            background: #2b9acf;
+                            color: #fff;
+                        }
                     }
                 }
             }
@@ -78,6 +91,7 @@
         }
     }
 }
+//tot
 
 @media (max-width: 991px){
     #ss-header{
