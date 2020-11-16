@@ -36,7 +36,7 @@
 
                 <p>Với sự hài lòng về dịch vụ và đội ngũ của Flexfit, anh/chị {{$infoContract->name_customer}} đã gửi tặng quá khách <span style="font-weight:bold;color: #000000;">phiếu quà tặng ưu đãi 15% các hạng mục gỗ và phụ kiện </span> khi quý khách thi công nội thất tại Flexfit.</p>
 
-                <p>Để nhận phiếu quà tặng, quý khách vui lòng xác nhận bằng cách click vào <span style="font-weight:bold;color: #000000;">"NHẬN QUÀ TẶNG"</span> Ở voucher bên dưới.</p>
+                <p>Để nhận phiếu quà tặng, quý khách vui lòng xác nhận bằng cách click vào <span style="font-weight:bold;color: #000000;">"NHẬN QUÀ TẶNG"</span> ở voucher bên dưới.</p>
 
                 <p>Hy vọng rằng Flexfit sẽ có cơ hội đồng hành cùng quý khách kiến tạo nên những tổ ấm thẩm mỹ và tiện nghi.</p>
 

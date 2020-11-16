@@ -48,11 +48,11 @@
             background-image: linear-gradient(to right, transparent 48%, #fff 41%);
         }
         .title-name {
-            margin-top:100px;
+            /* margin-top:10px; */
         }
 
         .description-flexfit {
-            font-size: 22px;
+            font-size: 18px;
         }
 
         .form-group {
@@ -137,7 +137,7 @@
                             </div>
                         </p>
 
-                        <div class="text-center" style="margin-top: 40px;">
+                        <div class="text-center" style="margin-top: 20px;">
                         <button type="submit" id="btn-send-info" class="btn" data-type="vi">Gửi đi</button>
                         </div>
                     </form>

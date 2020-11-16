@@ -103,7 +103,7 @@ class AskAdviceController extends Controller
 			} elseif($this->type_of_project == 3) {
 				return 'Văn phòng';
 			} else {
-				return 'Không xác định';
+				return '';
 			}
         });
 		
@@ -126,7 +126,7 @@ class AskAdviceController extends Controller
         $show->id('Id');
         $show->name('Tên người nhận');
         $show->phone('Số điện thoại - Email');
-        $show->Email('Email');
+        $show->email('Email');
         $show->contract_code('Mã hợp đồng');
 
         return $show;

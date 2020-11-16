@@ -54,7 +54,7 @@
 <main id="insuarance-wrapper">
     <section class="section-banner">
         <div class="imgc">
-            <img src="images/trang-bao-hanh_kfzpzv.jpg" alt="">
+            <img src="images/trang-bao-hanh_kfzpzv.jpg" alt="" style="filter: brightness(80%);">
             <div class="text">
                 <p>WARRANTY INFORMATION</p>
                 <p>code {{$data->contract_code}}</p>
@@ -175,7 +175,7 @@
                     @foreach($question_answer as $list)
                         <button class="accordion"><span>{{$list->question}}</span></button>
                         <div class="panel">
-                            <div class="txt">
+                            <div class="txt" style="text-align: left;">
                                 {{$list->answer}}
                             </div>
                         </div>
@@ -208,7 +208,7 @@
                                 <input type="text"  id="name" name="name" placeholder="Your name">
                             </div>
                             <div class="box-input">
-                                <input type="number" id="phone" name="phone" placeholder="Phone">
+                                <input type="text" id="phone" name="phone" placeholder="Phone">
                             </div>
                             <div class="box-input" style="width:100% !important;">
                                 <input type="email" id="email" name="email" placeholder="Email">
