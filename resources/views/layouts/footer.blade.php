@@ -12,15 +12,15 @@
                            
                             <div class="content_box">
                                  <ul>
-                                        <li><a href="" title=""><h2 class="title"> Về chúng tôi</h2></a></li>
-                                        <li><a href=""><h2 class="title"> THIẾT KẾ TIÊU BIỂU</h2></a></li>
-                                        <li><a href=""><h2 class="title">Tin tức</h2></a></li>
-                                        <li><a href="" title=""><h2 class="title"> THIẾT KẾ NỘI THẤT</h2></a></li>
-                                        <li><a href="" title=""><h2 class="title"> Dự án</h2></a></li>
-                                        <li><a href="" title=""><h2 class="title"> Liên hệ</h2></a></li>
-                                        <li><a href="" title=""><h2 class="title"> SẢN XUẤT NỘI THẤT</h2></a></li>
-                                        <li><a href="" title=""><h2 class="title"> BẢO HÀNH – BẢO TRÌ</h2></a></li>
-                                    </ul>
+                                    <li><a href="https://flexfit.vn/ve-chung-toi" title=""><h2 class="title"> Về chúng tôi</h2></a></li>
+                                    <li><a href="https://flexfit.vn/tktb"><h2 class="title"> THIẾT KẾ TIÊU BIỂU</h2></a></li>
+                                    <li><a href="https://flexfit.vn/tin-tuc"><h2 class="title">Tin tức</h2></a></li>
+                                    <li><a href="https://flexfit.vn/quy-trinh" title=""><h2 class="title"> THIẾT KẾ NỘI THẤT</h2></a></li>
+                                    <li><a href="https://flexfit.vn/du-an" title=""><h2 class="title"> Dự án</h2></a></li>
+                                    <li><a href="https://flexfit.vn/lien-he" title="https://flexfit.vn/lien-he"><h2 class="title"> Liên hệ</h2></a></li>
+                                    <li><a href="https://flexfit.vn/quy-trinh?tab=dvtcdh" title=""><h2 class="title"> SẢN XUẤT NỘI THẤT</h2></a></li>
+                                    <li><a href="https://flexfit.vn/quy-trinh?tab=baotri" title=""><h2 class="title"> BẢO HÀNH – BẢO TRÌ</h2></a></li>
+                                </ul>
                             </div>
                         </div> 
                         <div class="col-12 box_footer box_footer4"> 

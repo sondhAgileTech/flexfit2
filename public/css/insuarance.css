@@ -164,10 +164,55 @@
   padding: 12px 10px;
   text-align: center;
   font-weight: 400;
+  position: relative;
 }
 
 #insuarance-wrapper .detail-insuarance-content .info-detail-insuarance table tr td:first-child {
   text-align: left;
+}
+
+#insuarance-wrapper .detail-insuarance-content .info-detail-insuarance table tr td .input-group.date {
+  visibility: hidden;
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  opacity: 0;
+  position: absolute;
+  top: -60px;
+  left: -100px;
+  display: flex;
+  background: #e0e0e0;
+  padding: 10px;
+  border-radius: 5px;
+  -webkit-transition: all ease 0.3s;
+  transition: all ease 0.3s;
+}
+
+#insuarance-wrapper .detail-insuarance-content .info-detail-insuarance table tr td .input-group.date .change-time-maintain-contract {
+  position: relative !important;
+}
+
+#insuarance-wrapper .detail-insuarance-content .info-detail-insuarance table tr td .input-group.date:after {
+  content: "";
+  position: absolute;
+  border-style: solid;
+  border-width: 15px;
+  height: 0;
+  width: 0;
+  bottom: -25px;
+  border-color: transparent transparent #e0e0e0 transparent;
+  left: calc(100% - 100px);
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+#insuarance-wrapper .detail-insuarance-content .info-detail-insuarance table tr td .input-group.date.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+#insuarance-wrapper .detail-insuarance-content .info-detail-insuarance table tr td:last-child i {
+  cursor: pointer;
 }
 
 #insuarance-wrapper .detail-insuarance-content .info-detail-insuarance table tr:first-child {
@@ -181,7 +226,7 @@
 }
 
 #insuarance-wrapper .thank-insuarance {
-  max-width: 768px;
+  max-width: 832px;
   margin: 0 auto;
   padding-top: 40px;
 }
@@ -256,7 +301,7 @@
 }
 
 #insuarance-wrapper .form-request {
-  max-width: 910px;
+  max-width: 695px;
   margin: 0 auto;
   -webkit-box-shadow: 4px 4px 25px rgba(0, 0, 0, 0.1);
           box-shadow: 4px 4px 25px rgba(0, 0, 0, 0.1);
