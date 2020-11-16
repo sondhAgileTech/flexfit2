@@ -17,16 +17,16 @@
 </head>
 <body>
     <div style="background:#ffffff;">
-        <div style="margin-left: 100px;margin-right: 265px;">
+        <div>
             <h2 style="margin-top:30px;color: #000000;">{{$infoContract->name_customer}} đã gửi tặng quý khách phiếu quà tặng từ Flexfit</h2>
         </div>
-        <div style="margin-left: 100px;margin-right: 265px;">
+        <div>
             <a href="https://flexfit.vn/tktb">
-                <img src="{{url('/images/img_banner_gift.png')}}"/>
+                <img src="{{url('/images/img_banner_gift.png')}}" style="max-width:100%;height:auto;"/>
             </a>
         </div>
 
-        <div style="margin-left: 100px;margin-right: 265px;font-size: 22px;color: #000000;">
+        <div style="font-size: 22px;color: #000000;">
             <div>
                 <p>Flexfit kính chào quý khách {{$receiver}},</p>
 
@@ -48,7 +48,7 @@
 
         <div style="margin-left: 100px;margin-right: 265px;">
             <a href="http://baohanh.flexfit.vn/mail/received_gift/{{$advice_id}}">
-                <img src="{{url('/images/img_gift_2.png')}}"/>
+                <img src="{{url('/images/img_gift_2.png')}}" style="max-width:100%;height:auto;"/>
             </a>
         </div>
 
