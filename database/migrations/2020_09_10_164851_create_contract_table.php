@@ -17,7 +17,7 @@ class CreateContractTable extends Migration
             $table->increments('id');
             $table->string('contract_code');
             $table->string('name_customer');
-            $table->string('construction_items');
+            $table->string('construction_items')->nullable();
             $table->string('phone');
             $table->string('address');
             $table->string('email');

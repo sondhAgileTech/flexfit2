@@ -17,7 +17,9 @@ class CreateContractProductTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('contract_id');
             $table->unsignedInteger('product_id');
-            $table->timestamp('selected_at')->useCurrent();
+            $table->timestamp('guarantee_one')->useCurrent();
+            $table->timestamp('guarantee_two')->useCurrent();
+            $table->timestamp('guarantee_three')->useCurrent();
             $table->timestamp('changed_time_maintain')->useCurrent();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();

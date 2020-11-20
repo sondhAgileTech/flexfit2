@@ -131,13 +131,13 @@
                             <tr>
                                 <td>{{$list->name}}</td>
                                 <td>{{$list->provider}}</td>
-                                <td class="{{Carbon\Carbon::now()->diffInDays(Carbon\Carbon::parse($data->finish_date)->addMonth(3), false) >= 0 ? 'bh-1' : 'bh-out-of-date-1' }}">{{date('d/m/Y', strtotime($data->finish_date.' + 3 months'))}}</td>
-                                <td class="{{Carbon\Carbon::now()->diffInDays(Carbon\Carbon::parse($data->finish_date)->addMonth(6), false) >= 0 ? '' : 'bh-out-of-date-1' }}">{{date('d/m/Y', strtotime($data->finish_date.' + 6 months'))}}</td>
-                                <td class="{{Carbon\Carbon::now()->diffInDays(Carbon\Carbon::parse($data->finish_date)->addMonth(12), false) >= 0 ? '' : 'bh-out-of-date-1' }}">{{date('d/m/Y', strtotime($data->finish_date.' + 12 months'))}}</td>
+                                <td class="{{Carbon\Carbon::now()->diffInDays(Carbon\Carbon::parse($list->guarantee_one), false) >= 0 ? 'bh-1' : 'bh-out-of-date-1' }}">{{date('d/m/Y', strtotime($list->guarantee_one))}}</td>
+                                <td class="{{Carbon\Carbon::now()->diffInDays(Carbon\Carbon::parse($list->guarantee_two), false) >= 0 ? '' : 'bh-out-of-date-1' }}">{{date('d/m/Y', strtotime($list->guarantee_two))}}</td>
+                                <td class="{{Carbon\Carbon::now()->diffInDays(Carbon\Carbon::parse($list->guarantee_three), false) >= 0 ? '' : 'bh-out-of-date-1' }}">{{date('d/m/Y', strtotime($list->guarantee_three))}}</td>
                                 <td class="bh-4">{{$data->status_mainten ? 'Trọn đời' : ''}}</td>
                                 <td>
                                     <!-- <div class="input-group date" >
-                                        <input data-now = "{{ date('Y/m/d', strtotime($now)) }}"  data-first="{{ date('Y/m/d', strtotime($list->finish_date.' + 3 months')) }}" data-seccond = "{{ date('Y/m/d', strtotime($list->finish_date.' + 6 months')) }}"  data-third = "{{ date('Y/m/d', strtotime($list->finish_date.' + 12 months')) }}"  class="form-control date-change-maintain datepicker"  type="text">
+                                        <input data-now = "{{ date('Y/m/d', strtotime($now)) }}"  data-first="{{ date('Y/m/d', strtotime($list->guarantee_one)) }}" data-seccond = "{{ date('Y/m/d', strtotime($list->guarantee_two)) }}"  data-third = "{{ date('Y/m/d', strtotime($list->guarantee_three)) }}"  class="form-control date-change-maintain datepicker"  type="text">
                                         <input class="data-contract-product" data-contact="{{ $data->id }}" data-product = "{{ $list->product_id }}" data-code="{{$data->contract_code}}" type ="hidden"> 
                                         <span class="input-group-addon">
                                             <i class="glyphicon glyphicon-calendar"></i>
@@ -187,7 +187,7 @@
     <section>
         <div class="container-master">
             <div class="question-insuarance">
-                <img src="images/voucher-img.png"/>
+                <img src="images/gift-v.png"/>
             </div>
         </div>
     </section>

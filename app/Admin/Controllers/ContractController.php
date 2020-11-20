@@ -15,10 +15,12 @@ use Encore\Admin\Show;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 use App\Admin\Extensions\Tools\ImportButton;
+use App\Admin\Extensions\Tools\ImportDetailProductsOfContract;
 use App\Admin\Actions\Member\ImportAction;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\Member\ImportMember;
+use App\Imports\Member\ImportProductsOfContract;
 
 class ContractController extends Controller
 {
@@ -93,7 +95,7 @@ class ContractController extends Controller
 
         $grid->contract_code('Mã Hợp Đồng');
         $grid->name_customer('Tên Khách Hàng');
-        $grid->construction_items('Hạng Mục');
+        // $grid->construction_items('Hạng Mục');
         $grid->phone('Số Điện Thoại');
         $grid->address('Địa Chỉ');
         $grid->email('Email');
@@ -120,6 +122,10 @@ class ContractController extends Controller
             $tools->append(new ImportButton());
         });
 
+        $grid->tools(function ($tools) {
+            $tools->append(new ImportDetailProductsOfContract());
+        });
+
          return $grid;
     }
 
@@ -131,6 +137,19 @@ class ContractController extends Controller
             // $request ...
             $file = $request-> file('file');
             Excel::import(new ImportMember, $file);
+        
+        }catch (\Exception $e){
+
+        }                                  
+    }
+
+    //import excel
+    protected function importProductOfContract(Content $content, Request $request)               
+    {      
+        try{
+            // $request ...
+            $file = $request-> file('file');
+            Excel::import(new ImportProductsOfContract, $file);
         
         }catch (\Exception $e){
 
@@ -149,16 +168,15 @@ class ContractController extends Controller
 
         $show->contract_code('Mã Hợp Đồng');
         $show->name_customer('Tên Khách Hàng');
-        $show->construction_items('Hạng Mục');
+        // $show->construction_items('Hạng Mục');
         $show->phone('Số Điện Thoại');
         $show->address('Địa Chỉ');
         $show->email('Email');
         $show->status_mainten('Trạng Thái')->using([true => 'Bảo hành', false => 'Bảo Trì']);
         $show->finish_date('Ngày Hoàn Thành');
         $show->language('Ngôn Ngữ');
-        $show->products('Sản Phẩm')->as(function ($products) {
-            if(is_array($products))
-            {
+        $show->contract_code('Mã Hợp Đồng')->as(function ($contract_code) {
+            $contractProduct = ContractProduct::where('contract_id',(int)$this->id)->get();
                 $html = '<table class="table">
                               <thead>
                                 <tr>
@@ -173,24 +191,23 @@ class ContractController extends Controller
                               </thead>
                         <tbody>';
                 $i = 1;
-                foreach ($products as $item) {
-                    $data = Product::where('id',(int)$item)->first();
+                foreach ($contractProduct as $item) {
+                    $data = Product::where('id',(int)$item->product_id)->first();
                     if($data) {
                         $html .= '<tr>
                           <th scope="row">'.$i.'</th>
                           <td>'.$data->name.'</td>
                           <td>'.$data->provider.'</td>
-                          <td>'.date('d/m/Y', strtotime($this->finish_date.' + 3 months')).'</td>
-                          <td>'.date('d/m/Y', strtotime($this->finish_date.' + 6 months')).'</td>
-                          <td>'.date('d/m/Y', strtotime($this->finish_date.' + 12 months')).'</td>
-                          <td>'.(($data->status_maitain_product)?'Bảo Hành':'Không Bảo Trì').'</td>
+                          <td>'.date('d/m/Y', strtotime($item->guarantee_one)).'</td>
+                          <td>'.date('d/m/Y', strtotime($item->guarantee_two)).'</td>
+                          <td>'.date('d/m/Y', strtotime($item->guarantee_three)).'</td>
+                          <td>'.(($this->status_mainten)?'Bảo Hành':'Không Bảo Trì').'</td>
                         </tr>';
                         $i++;
                     }
                 }
                 $html .= '</tbody></table>';
                 return $html;
-            }
         })->unescape();
         $show->id('QR Code')->as(function ($id) {
             $data = Contract::where('id',$id)->first();
@@ -230,9 +247,9 @@ class ContractController extends Controller
         $form->text('name_customer', 'Tên Khách Hàng')->rules('required', [
             'required' => 'Xin vui lòng nhập họ và tên khách hàng.'
         ]);
-        $form->text('construction_items', 'Hạng Mục')->rules('required', [
-            'required' => 'Xin vui lòng nhập hạng mục.'
-        ]);
+        // $form->text('construction_items', 'Hạng Mục')->rules('required', [
+        //     'required' => 'Xin vui lòng nhập hạng mục.'
+        // ]);
         $form->text('phone', 'Số Điện Thoại')->rules('required|regex:/^\d+$/|max:12', [
             'required' => 'Xin vui lòng nhập số điện thoại.',
             'regex' => 'Số điện thoại phải là số.',
@@ -250,31 +267,33 @@ class ContractController extends Controller
         ]);
         $language = ['en'=>'English', 'vi'=> 'Việt nam'];
         $form->select('language', 'Ngôn Ngữ')->options($language);
-        $form->multipleSelect('products',__('Sản Phẩm'))->options(function ($id) {
-            $data = Product::find($id);
-            if($data)
-            {
-                $result = [];
-                foreach ($data as $item)
-                {
-                    $result[$item->id] = $item->name;
-                }
-                return $result;
-            }
+        // $form->multipleSelect('products',__('Sản Phẩm'))->options(function ($id) {
+        //     $data = Product::find($id);
+        //     if($data)
+        //     {
+        //         $result = [];
+        //         foreach ($data as $item)
+        //         {
+        //             $result[$item->id] = $item->name;
+        //         }
+        //         return $result;
+        //     }
 
-        })->rules('required', [
-            'required' => 'Xin vui lòng chọn sản phẩm.'
-        ])->ajax('/'.config('admin.route.prefix').'/api/product');
+        // })->rules('required', [
+        //     'required' => 'Xin vui lòng chọn sản phẩm.'
+        // ])->ajax('/'.config('admin.route.prefix').'/api/product');
 
         $form->file('file_upload','Upload file')->name(function ($file) {
             return 'File_bao_hanh.'.$file->guessExtension();
         });
 
         // $form->file('file_upload','Upload file')->move($dir, $name);
-        // $form->hasMany('product_list', 'Danh Sách Sản Phẩm', function (Form\NestedForm $form) {
-        //     $form->select('product_id','Sản Phẩm')->options(Product::all()->pluck('name','id'));
-        //     $form->datetime('selected_at', 'Ngày bảo hành')->default(date('Y-m-d H:i:s'));
-        // });
+        $form->hasMany('product_list', 'Danh Sách Sản Phẩm', function (Form\NestedForm $form) {
+            $form->select('product_id','Sản Phẩm')->options(Product::all()->pluck('name','id'));
+            $form->datetime('guarantee_one', 'Bảo hành lần 1')->default(date('Y-m-d H:i:s'));
+            $form->datetime('guarantee_two', 'Bảo hành lần 2')->default(date('Y-m-d H:i:s'));
+            $form->datetime('guarantee_three', 'Bảo hành lần 3')->default(date('Y-m-d H:i:s'));
+        });
 
         return $form;
     }

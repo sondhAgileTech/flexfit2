@@ -61,20 +61,20 @@ SCRIPT;
 
         $this->setUpScripts();
 
-        $import = 'Import';
+        $import = 'Nhập Hợp Đồng';
 
         return <<<EOT
 
             <div class="pull-right" style="margin-right: 10px">
-            <label id="input">
-            <span class="btn btn-sm btn-twitter">
-            <span><i class="fa fa-upload"></i> {$import}</span>
-            <input type="file" id="files" name="csvfile" style="display:none">
-            </span>
-            </label>
-            <span id="confirm" class="btn btn-sm btn-twitter" style="display:none">
-            <span><i class="fa fa-upload"></i> <span class="text"></span></span>
-            </span>
+                <label id="input">
+                    <span class="btn btn-sm btn-twitter">
+                        <span><i class="fa fa-upload"></i> {$import}</span>
+                        <input type="file" id="files" name="csvfile" style="display:none">
+                    </span>
+                </label>
+                <span id="confirm" class="btn btn-sm btn-twitter" style="display:none">
+                    <span><i class="fa fa-upload"></i> <span class="text"></span></span>
+                </span>
             </div>
 EOT;
 

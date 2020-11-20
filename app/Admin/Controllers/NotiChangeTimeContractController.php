@@ -12,6 +12,7 @@ use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Show;
+use Carbon\Carbon;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class NotiChangeTimeContractController extends Controller
@@ -203,6 +204,12 @@ class NotiChangeTimeContractController extends Controller
 
         $form->saved(function (Form $form) {
             if($form->model()->status_changed_time_maintain == 'accept') {
+
+                ContractProduct::where('contract_id', '=' , $form->model()->id)->update([
+                    'guarantee_one' => Carbon::parse($form->model()->changed_time_maintain)->addMonth(3),
+                    'guarantee_two' => Carbon::parse($form->model()->changed_time_maintain)->addMonth(6),
+                    'guarantee_three' => Carbon::parse($form->model()->changed_time_maintain)->addMonth(12),
+                ]);
                 Contract::where('id', '=' , $form->model()->id)->update(['finish_date' => $form->model()->changed_time_maintain ]);
             }        
         });

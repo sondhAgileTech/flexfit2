@@ -43,15 +43,15 @@ class ImportMember implements ToModel,WithStartRow,WithHeadingRow
     */
     public function model(array $row)
     {
-        $product = Product::firstOrCreate([
-            'name' => trim($row['hang_muc_thi_cong']),
-            'provider' => 'Flexfit',
-            'status_maitain_product' => true
-        ]);
+        // $product = Product::firstOrCreate([
+        //     'name' => trim($row['hang_muc_thi_cong']),
+        //     'provider' => 'Flexfit',
+        //     'status_maitain_product' => true
+        // ]);
 
         $contract_code = trim($row['ma_hop_dong']);                 
         $name_customer = trim($row['ho_va_ten_khach_hang']); 
-        $construction_items = trim($row['hang_muc_thi_cong']);
+        // $construction_items = trim($row['hang_muc_thi_cong']);
         $phone = trim($row['so_dien_thoai']);
         $address = trim($row['dia_chi']);
         $email = trim($row['email']);
@@ -59,19 +59,19 @@ class ImportMember implements ToModel,WithStartRow,WithHeadingRow
         $language = ($row['ngon_ngu_su_dung']==='en')?'en':'vi';
         $finish_date = $this->transformDate($row['ngay_hoan_thanh'])->format('Y-m-d H:i:s');
 
-        $data = Product::where('name', $construction_items)->first();
+        // $data = Product::where('name', $construction_items)->first();
 
         $contract = Contract::firstOrCreate([
             'contract_code' => $contract_code,
             'name_customer' => $name_customer,
-            'construction_items' => $construction_items,
+            // 'construction_items' => $construction_items,
             'phone' => $phone,
             'address' => $address,
             'email' => $email,
             'status_mainten' => $status_mainten,
             'language' => $language,
             'finish_date' => $finish_date,
-            'products' => [$data->id]
+            // 'products' => [$data->id]
         ]);
     }
 

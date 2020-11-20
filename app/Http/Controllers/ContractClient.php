@@ -20,15 +20,28 @@ class ContractClient extends Controller
         $data = Contract::where(['contract_code' => $request->id])->first();
         if($data) {
             $now = date('Y-m-d H:i:s');
-            if(is_array($data->products)) {
+            // if(is_array($data->products)) {
+            //     $listProduct = [];
+            //     foreach ($data->products as $item) {
+            //         $product = Product::where('id',(int)$item)->first();
+            //         if($product) {
+            //             $listProduct[] = $product;
+            //         }
+            //     }
+            // }
+            $contractProduct = ContractProduct::where(['contract_id' => $data->id])->get();
                 $listProduct = [];
-                foreach ($data->products as $item) {
-                    $product = Product::where('id',(int)$item)->first();
+                foreach ($contractProduct as $item) {
+                    // $product = Product::where('id',(int)$item->product_id)->first();
+                    $product = DB::table('product')
+                                ->join('contract_product', 'contract_product.product_id', '=', 'product.id')
+                                ->where('product.id', $item->product_id)
+                                ->first();
                     if($product) {
                         $listProduct[] = $product;
                     }
                 }
-            }
+                // dd($listProduct);
             if($data->language === 'vi') {
                 return view('contract_none_token', [
                     'data' => $data,
