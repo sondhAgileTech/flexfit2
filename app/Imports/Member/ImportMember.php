@@ -5,6 +5,7 @@ namespace App\Imports\Member;
 use App\AppModelsContract;
 use App\Contract;
 use App\Product;
+use App\MailContract;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithStartRow;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
@@ -59,6 +60,11 @@ class ImportMember implements ToModel,WithStartRow,WithHeadingRow
         $language = ($row['ngon_ngu_su_dung']==='en')?'en':'vi';
         $finish_date = $this->transformDate($row['ngay_hoan_thanh'])->format('Y-m-d H:i:s');
 
+        $mail = MailContract::firstOrCreate([
+            'email' => $email,
+            'contract_code' => trim($row['ma_hop_dong']),
+            'status' => 1,
+        ]);
         // $data = Product::where('name', $construction_items)->first();
 
         $contract = Contract::firstOrCreate([

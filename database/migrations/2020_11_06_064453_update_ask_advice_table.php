@@ -14,10 +14,10 @@ class UpdateAskAdviceTable extends Migration
     public function up()
     {
         Schema::table('ask_advice', function (Blueprint $table) {
-            $table->integer('type_of_project');
-            $table->integer('floor_area');
-            $table->string('construction_address');
-            $table->string('phone_received');
+            $table->integer('type_of_project')->nullable();
+            $table->integer('floor_area')->nullable();
+            $table->string('construction_address')->nullable();
+            $table->string('phone_received')->nullable();
         });
     }
 
