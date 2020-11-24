@@ -25,8 +25,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('send:mail')
-        //         ->everyMinute();
+        $schedule->command('send:mail')
+                ->daily();
         $schedule->command('send:mailcontract')
         ->everyMinute();
         // run lenh : cd /đuong-dan-den-project && php artisan schedule:run >> /dev/null 2>&1

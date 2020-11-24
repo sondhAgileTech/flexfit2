@@ -12,8 +12,8 @@
   <style type="text/css">
   </style>    
 </head>
-<body style="margin:0; padding:0;>
-   <a href='http://baohanh.flexfit.vn/hop-dong/{{$data->contract_code}}' title="" target="_blank">
+<body style="margin:0; padding:0;">
+   <a href='http://baohanh.flexfit.vn/hop-dong/{{$data->contract_code}}' target="_blank">
     <div style="position: relative;">
             <img style="position: absolute;z-index: 1;top: 0;left: 0;width: 100%;height: 100%;object-fit: cover;" src="{{url('/images/trang-bao-hanh_kfzpzv.jpg')}}" alt="" style="filter: brightness(80%);">
             <div style="position: absolute;text-align:center;top: 50%;left: 50%;z-index: 1;transform: translate(-50%, -50%);">
