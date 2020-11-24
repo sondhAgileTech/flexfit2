@@ -15,8 +15,8 @@
 <body style="margin:0; padding:0;">
    <a href='http://baohanh.flexfit.vn/hop-dong/{{$data->contract_code}}' target="_blank">
     <div style="position: relative;">
-            <img style="position: absolute;z-index: 1;top: 0;left: 0;width: 100%;height: 100%;object-fit: cover;" src="{{url('/images/trang-bao-hanh_kfzpzv.jpg')}}" alt="" style="filter: brightness(80%);">
-            <div style="position: absolute;text-align:center;top: 50%;left: 50%;z-index: 1;transform: translate(-50%, -50%);">
+            <img src="{{url('/images/trang-bao-hanh_kfzpzv.jpg')}}" alt="" style="width: 100%;height: 100%;object-fit: cover;filter: brightness(80%);"/>
+            <div style="position: absolute;text-align:center;top: 35%;left: 50%;z-index: 1;transform: translate(-50%, -50%);">
                 <p style="text-transform: uppercase;color: #fff;font-size: 1.6rem;">Thông tin bảo hành</p>
                 <p style="font-size: 3rem;font-weight: 300;text-transform: uppercase;color: #fff;">HĐ {{$data->contract_code}}</p>
             </div>
