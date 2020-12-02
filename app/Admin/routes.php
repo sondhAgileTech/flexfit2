@@ -24,6 +24,7 @@ Route::group([
     $router->resource('contracts_warranty_2', ContractWarranty2Controller::class);
     $router->resource('contracts_warranty_3', ContractWarranty3Controller::class);
     $router->resource('noti-change-time-contract', NotiChangeTimeContractController::class);
+    $router->resource('mail-contract', MailContractController::class);
     $router->get('/api/product','\App\Http\Controllers\ProductController@getSearch');
     $router->post('contract/csv/import', '\App\Admin\Controllers\ContractController@import');
     $router->post('contract/csv/import/product', '\App\Admin\Controllers\ContractController@importProductOfContract');
