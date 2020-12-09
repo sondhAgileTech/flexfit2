@@ -53,6 +53,9 @@ class SentMailContract extends Command
             ->get();
         foreach ($data as $value) {
             if($value->email != null) {
+                if($value->status == 2) {
+                    break;
+                }
                 Mail::send('mail_contract', ['data' => $value], function($message) use ($value) {
                     $message->to($value->email)->subject
                        ('Thông tin bảo hành từ Flexfit');

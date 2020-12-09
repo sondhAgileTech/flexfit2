@@ -10,7 +10,7 @@ class MailContract extends Model
     protected $table = 'mail';
 
     protected $fillable = [
-        'email','status','contract_code'
+        'email','status','contract_code','name_customer','sdt_customer'
     ];
 
 }

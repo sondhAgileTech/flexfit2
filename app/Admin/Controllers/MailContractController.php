@@ -83,6 +83,9 @@ class MailContractController extends Controller
 
         $grid->id('Id');
         $grid->email('Email');
+        $grid->name_customer('Tên Khách Hàng');
+        $grid->sdt_customer('Số điện thoại Khách Hàng');
+        $grid->email('Email');
         $grid->status('Trạng thái')->display(function($status) {
             if($status == 1) {
                 return "Chưa gửi";
@@ -108,6 +111,9 @@ class MailContractController extends Controller
 
         $show->id('Id');
         $show->email('Email');
+        $show->name_customer('Tên khách hàng');
+        $show->sdt_customer('Số điện thoại');
+        $show->email('Email');
         $show->status('Trạng thái');
         $show->contract_code('Mã hợp đồng');
         return $show;
@@ -126,6 +132,8 @@ class MailContractController extends Controller
         $language = ['1'=>'Chưa gửi', '2'=> 'Đã gửi'];
         $form->select('status', 'Trạng thái mail')->options($language);
         $form->text('contract_code', 'Mã hợp đồng');
+        $form->text('sdt_customer', 'Số điện thoại');
+        $form->text('name_customer', 'Tên khách hàng');
 
         return $form;
     }

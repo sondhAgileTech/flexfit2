@@ -62,6 +62,8 @@ class ImportMember implements ToModel,WithStartRow,WithHeadingRow
 
         $mail = MailContract::firstOrCreate([
             'email' => $email,
+            'name_customer' => $name_customer,
+            'sdt_customer' => $phone,
             'contract_code' => trim($row['ma_hop_dong']),
             'status' => 1,
         ]);

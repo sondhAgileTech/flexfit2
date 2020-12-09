@@ -98,7 +98,9 @@
                         ->size(400)->errorCorrection('H')
                         ->generate(env('APP_URL').'/'.$token)) !!} ">
                     </div>
-                    <a class="download-file" data-code="{{$data->contract_code}}" title="" target="_blank">Click để tải file bảo hành</a>
+                    @if($data->file_upload)
+                        <a class="download-file" data-code="{{$data->contract_code}}" title="" target="_blank">Click để tải file bảo hành</a>
+                    @endif
                 </div>
             </div>
         </div>

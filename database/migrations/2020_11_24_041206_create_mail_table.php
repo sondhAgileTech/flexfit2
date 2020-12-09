@@ -17,6 +17,8 @@ class CreateMailTable extends Migration
             $table->increments('id');
             $table->string('email')->nullable();
             $table->integer('status')->nullable();
+            $table->string('sdt_customer')->nullable();
+            $table->string('name_customer')->nullable();
             $table->string('contract_code');
             $table->timestamps();
         });
