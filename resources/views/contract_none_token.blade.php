@@ -83,10 +83,6 @@
                         <span>{{$data->contract_code}}</span>
                     </div>
                     <div class="item">
-                        <span>Hạng mục hợp đồng:</span>
-                        <span>{{$data->construction_items}}</span>
-                    </div>
-                    <div class="item">
                         <span>Ngày hoàn thành:</span>
                         <span>{{date('d/m/Y', strtotime($data->finish_date))}}</span>
                     </div>

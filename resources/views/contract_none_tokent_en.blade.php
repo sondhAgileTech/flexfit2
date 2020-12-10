@@ -83,10 +83,6 @@
                         <span>{{$data->contract_code}}</span>
                     </div>
                     <div class="item">
-                        <span>Contract category:</span>
-                        <span>{{$data->construction_items}}</span>
-                    </div>
-                    <div class="item">
                         <span>Finish day:</span>
                         <span>{{date('d/m/Y', strtotime($data->finish_date))}}</span>
                     </div>

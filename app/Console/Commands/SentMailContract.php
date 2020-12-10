@@ -49,7 +49,7 @@ class SentMailContract extends Command
         $data = DB::table('mail')
             ->join('contract', 'contract.contract_code', '=', 'mail.contract_code')
             ->where('mail.status', 1)
-            ->select('mail.id','mail.email','contract.contract_code', 'contract.name_customer', 'contract.finish_date')
+            ->select('mail.id','mail.status','mail.email','contract.contract_code', 'contract.name_customer', 'contract.finish_date')
             ->get();
         foreach ($data as $value) {
             if($value->email != null) {
@@ -70,19 +70,10 @@ class SentMailContract extends Command
                     ->where('id', $value->id)
                     ->update(['status' => 2]);
                  }
-                // $email[] = $value->email;
+
             }
 
         }
-
-        // Mail::send('mail_contract', ['data' => ''], function($message) use ($email) {
-        //     $message->to('dinhhongson23596@gmail.com')->bcc($email)->subject
-        //        ('Thông tin bảo hành từ Flexfit');
-        //     $message->from(env('MAIL_USERNAME','nguyenthutrang.vtalb@gmail.com'),'Bảo hành Flextfit');
-        // });
-
-
-
         \Log::info($now);
         \Log::info("Cron is working fine!");
     }
